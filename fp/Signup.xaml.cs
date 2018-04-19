@@ -13,39 +13,28 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x804 上介绍了“空白页”项模板
+// https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
 
 namespace fp
 {
     /// <summary>
     /// 可用于自身或导航至 Frame 内部的空白页。
     /// </summary>
-    public sealed partial class MainPage : Page
+    public sealed partial class Signup : Page
     {
-        public MainPage()
+        public Signup()
         {
             this.InitializeComponent();
         }
 
-        private void NavigationView_Loaded(object sender, RoutedEventArgs e)
+        private void Button1_Click(object sender, RoutedEventArgs e)
+        {
+            Frame1.Navigate(typeof(Signin));
+        }
+
+        private void HyperlinkButton_Click(object sender, RoutedEventArgs e)
         {
 
         }
-        private void NavView_Navigate(NavigationViewItem item)
-        {
-            switch (item.Tag)
-            {
-                case "home":
-                    ContentFrame.Navigate(typeof(Signin));
-                    break;
-                case "Photo":
-                    ContentFrame.Navigate(typeof(Signup));
-                    break;
-
-
-            }
-        }
-
-
     }
 }

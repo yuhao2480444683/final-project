@@ -6,16 +6,17 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-
+    <Frame Name="ContentFrame">
     <Grid Background="Pink">
-        <NavigationView>
+       
+            <NavigationView Loaded="NavigationView_Loaded">
             <NavigationView.MenuItems>
-                <NavigationViewItem Content="Home">
+                <NavigationViewItem Content="Home" Tag="Home">
                     <NavigationViewItem.Icon>
-                        <FontIcon Glyph="&#xE10F;"></FontIcon>
+                        <FontIcon Glyph="&#xE10F;"  ></FontIcon>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-                <NavigationViewItem Content="Photo">
+                <NavigationViewItem Content="Photo" Tag="Photo">
                     <NavigationViewItem.Icon>
                         <FontIcon Glyph="&#xE77B;"></FontIcon>
                     </NavigationViewItem.Icon>
@@ -54,8 +55,13 @@
                 </NavigationViewItem>
 
             </NavigationView.MenuItems>
-        </NavigationView>
-    </Grid>
+  
+              
+          
 
+        </NavigationView>
+     
+    </Grid>
+    </Frame>
 
 </Page>
