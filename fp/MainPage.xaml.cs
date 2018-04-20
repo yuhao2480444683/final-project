@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -27,25 +28,54 @@ namespace fp
             this.InitializeComponent();
         }
 
-        private void NavigationView_Loaded(object sender, RoutedEventArgs e)
+        private ObservableCollection<String> suggestions;
+        private void AutoSuggestBox1_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
         {
 
+            if (args.ChosenSuggestion != null)
+
+                AutoSuggestBox1.Text = args.ChosenSuggestion.ToString();
+
+            else
+
+                AutoSuggestBox1.Text = sender.Text;
         }
-        private void NavView_Navigate(NavigationViewItem item)
+
+        private void AutoSuggestBox1_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
         {
-            switch (item.Tag)
+            AutoSuggestBox1.Text = "Choosen";
+        }
+
+        private void AutoSuggestBox1_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
+        {
+           /* if (args.Reason == AutoSuggestionBoxTextChangeReason.UserInput)
+
             {
-                case "home":
-                    ContentFrame.Navigate(typeof(Signin));
-                    break;
-                case "Photo":
-                    ContentFrame.Navigate(typeof(Signup));
-                    break;
+
+                suggestions.Clear();
+
+                suggestions.Add(sender.Text + "1");
 
 
+                sender.ItemsSource = suggestions;
+
+            }*/
+        }
+
+        private void HyperlinkButton_Click(object sender, RoutedEventArgs e)
+        {
+            SigninFrame.Navigate(typeof(Signup));
+        }
+
+        private void Button1_Click(object sender, RoutedEventArgs e)
+        {
+            var username = AutoSuggestBox1.Text.ToString();
+            var password = Passwordbox1.Text.ToString();
+
+            if (username == "123" && password == "456" )
+            {
+                SigninFrame.Navigate(typeof(Navigation));
             }
         }
-
-
     }
 }

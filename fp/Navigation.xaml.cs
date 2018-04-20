@@ -20,21 +20,31 @@ namespace fp
     /// <summary>
     /// 可用于自身或导航至 Frame 内部的空白页。
     /// </summary>
-    public sealed partial class Signup : Page
+    public sealed partial class Navigation : Page
     {
-        public Signup()
+        public Navigation()
         {
             this.InitializeComponent();
         }
 
-        private void Button1_Click(object sender, RoutedEventArgs e)
+        private void NavigationView_Loaded(object sender, RoutedEventArgs e)
         {
-          
+
+        }
+        private void NavView_Navigate(NavigationViewItem item)
+        {
+            switch (item.Tag)
+            {
+                case "home":
+                  
+                    break;
+                case "Photo":
+                
+                    break;
+
+
+            }
         }
 
-        private void HyperlinkButton_Click(object sender, RoutedEventArgs e)
-        {
-            SignupFrame.Navigate(typeof(MainPage));
-        }
     }
 }
