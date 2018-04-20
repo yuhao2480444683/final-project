@@ -1,0 +1,46 @@
+﻿<Page
+    x:Class="fp.note"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:fp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <StackPanel Orientation="Vertical" Background="White">
+        <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal">
+                <AppBarButton Icon="Calendar" Foreground="Pink" FontWeight="Bold" Label="Date" Click="AppBarButton_Click"></AppBarButton>
+                <AppBarButton Icon="Library" Foreground="Pink" FontWeight="Bold" Label="Notes"></AppBarButton>
+                <AppBarButton Icon="Important" Foreground="Pink" FontWeight="Bold" Label="Collect"></AppBarButton>
+                <AppBarButton Icon="Delete" Foreground="Pink" FontWeight="Bold" Label="Delete"></AppBarButton>
+                <AppBarButton Icon="More" Foreground="Pink" FontWeight="Bold" Label="More"></AppBarButton>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBox Height="60"  PlaceholderText="Title" />
+                <TextBox Height="60"  PlaceholderText="New Tag" />
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <ComboBox PlaceholderText="Pick a Font" ItemsSource="{x:Bind Fonts}" DisplayMemberPath="Item1" SelectedValuePath="Item2" Width="200" Loaded="Combo2_Loaded"/>
+            <ComboBox PlaceholderText="FontSize"/>
+            <Border  BorderThickness="2,2,2,2" BorderBrush="Gray">
+                <StackPanel Orientation="Horizontal">
+                    <AppBarButton Icon="Bold"></AppBarButton>
+                    <AppBarButton Icon="Character"></AppBarButton>
+                    <AppBarButton Icon="Underline"></AppBarButton>
+                    <AppBarButton Icon="Italic"></AppBarButton>
+                    <AppBarButton Icon="AllApps"></AppBarButton>
+                    <AppBarButton Icon="Emoji2"></AppBarButton>
+                    <AppBarButton Icon="Undo"></AppBarButton>
+                    <AppBarSeparator/>
+                    <AppBarButton Icon="Redo"></AppBarButton>
+                    <AppBarButton Icon="Pictures"></AppBarButton>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+        <StackPanel>
+            <RichEditBox x:Name="Noting" PlaceholderText="开始记笔记吧……" />
+        </StackPanel>
+    </StackPanel>
+</Page>
