@@ -41,7 +41,10 @@ namespace fp
                 case "Photo":
                 
                     break;
+                case "New":
+                    contentframe.Navigate(typeof(note));
 
+                    break;
 
             }
         }

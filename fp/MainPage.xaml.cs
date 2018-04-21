@@ -70,9 +70,9 @@ namespace fp
         private void Button1_Click(object sender, RoutedEventArgs e)
         {
             var username = AutoSuggestBox1.Text.ToString();
-            var password = Passwordbox1.Text.ToString();
+            var password = Passwordbox1.Password;
 
-            if (username == "123" && password == "456" )
+            if (username == "123" && Passwordbox1.Password == "456" )
             {
                 SigninFrame.Navigate(typeof(Navigation));
             }

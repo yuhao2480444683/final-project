@@ -7,9 +7,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-        <Grid Background="Pink">
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-            <NavigationView Loaded="NavigationView_Loaded">
+            <NavigationView Loaded="NavigationView_Loaded" IsSettingsVisible="True" IsTabStop="False">
                 <NavigationView.MenuItems>
                     <NavigationViewItem Content="Home" Tag="Home">
                         <NavigationViewItem.Icon>
@@ -21,7 +21,7 @@
                             <FontIcon Glyph="&#xE77B;"></FontIcon>
                         </NavigationViewItem.Icon>
                     </NavigationViewItem>
-                    <NavigationViewItem Content="New">
+                    <NavigationViewItem Content="New" Tag="New">
                         <NavigationViewItem.Icon>
                             <FontIcon Glyph="&#xE70F;"></FontIcon>
                         </NavigationViewItem.Icon>
@@ -55,11 +55,11 @@
                     </NavigationViewItem>
 
                 </NavigationView.MenuItems>
+            <Frame Name="contentframe"/>
 
 
 
-
-            </NavigationView>
+        </NavigationView>
 
         </Grid>
 

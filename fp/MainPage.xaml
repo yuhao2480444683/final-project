@@ -278,9 +278,9 @@
                                 <TextBlock Height="56"></TextBlock>
                                 <AutoSuggestBox Style="{StaticResource AutoSuggestBoxStyle1}"  Name="AutoSuggestBox1" HorizontalAlignment="Center"  PlaceholderText="电子邮箱"  QuerySubmitted="AutoSuggestBox1_QuerySubmitted"  SuggestionChosen="AutoSuggestBox1_SuggestionChosen"  TextChanged="AutoSuggestBox1_TextChanged"   Width="301" Height="56"></AutoSuggestBox>
                                 <TextBlock Height="56"></TextBlock>
-                                <TextBox  Text="密码" Name="Passwordbox1" Foreground="Gray" HorizontalAlignment="Center" FontSize="30" Height="56"   Width="301" ></TextBox>
+                                <PasswordBox x:Name="Passwordbox1" Height="56" PlaceholderText="输入密码" FontSize="30"></PasswordBox>
                                 <TextBlock Height="56"></TextBlock>
-                                <Button     Name="Button1" Click="Button1_Click" HorizontalAlignment="Center" Foreground="White" Content="登陆" Background="Pink" Width="301" Height="56" ></Button>
+                                <Button Name="Button1" Click="Button1_Click" HorizontalAlignment="Center" Foreground="White" Content="登陆" FontSize="30" Background="Pink" Width="301" Height="56" ></Button>
                                 <TextBlock Height="56"></TextBlock>
                             </StackPanel>
                             <TextBlock Width="200"></TextBlock>
