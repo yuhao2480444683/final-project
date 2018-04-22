@@ -1,0 +1,69 @@
+﻿<Page
+    x:Class="fp.Search"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:fp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <StackPanel Orientation="Vertical" Background="White">
+        <TextBox PlaceholderText="搜索笔记"  TextAlignment="Left"  FontSize="48" Height="150" Padding="70,80,0,0" TextWrapping="NoWrap" Visibility="Visible" BorderThickness="0,0,0,0" />
+        <StackPanel Orientation="Vertical" >
+            <Border BorderBrush="Pink" BorderThickness="0,0,0,1" Opacity="0.7">
+                <TextBlock Text="正在搜索笔记……" FontSize="18" Foreground="SlateGray" Opacity="0.7" Padding="140,12,0,12"/>
+            </Border>
+            <StackPanel Orientation="Horizontal" >
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal" >
+                        <Border BorderBrush="Pink" BorderThickness="0,0,0,1" Opacity="0.7">
+                            <TextBlock Text="{Binding numberOfResalt }"  FontSize="18" Height="63" Width="50" TextAlignment="Right" Padding="0,20,0,0" Foreground="HotPink" Opacity="0.5"/>
+                        </Border>
+                        <Border BorderBrush="Pink" BorderThickness="0,0,1,1" Opacity="0.7">
+                            <TextBlock Text="条结果" FontSize="18" Width="260" Height="63" TextAlignment="Left" Padding="0,20,0,0" Foreground="HotPink" Opacity="0.5"/>
+                        </Border>
+                    </StackPanel>
+                    <Border BorderBrush="Pink" BorderThickness="0,0,1,0" Opacity="0.7">
+                        <ScrollViewer Visibility="Visible" VerticalScrollBarVisibility="Visible" Height="Auto">
+                            <Grid>
+                                <ListView ItemsSource="{Binding ResaltList}">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate x:DataType="local:Resalt">
+                                            <StackPanel Orientation="Vertical">
+                                                <TextBlock Text="{x:Bind Title}" FontSize="18" Padding="15,0,0,15"></TextBlock>
+                                                <Border BorderBrush="Pink" BorderThickness="0,0,0,1" Opacity="0.7">
+                                                    <TextBlock Text="{x:Bind Time}" Foreground="Gray" Opacity="0.7" FontSize="12" Padding="12,0,0,15"></TextBlock>
+                                                </Border>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                    <ListView.ItemContainerStyle>
+                                        <Style TargetType="ListViewItem">
+                                            <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
+                                        </Style>
+                                    </ListView.ItemContainerStyle>
+                                </ListView>
+                            </Grid>
+                        </ScrollViewer>
+                    </Border>
+                </StackPanel>
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal" Padding="0,0,846,0">
+                        <AppBarButton Icon="Calendar" Foreground="Pink" FontWeight="Bold" Label="Date"></AppBarButton>
+                        <AppBarButton Icon="Library" Foreground="Pink" FontWeight="Bold" Label="Notes"></AppBarButton>
+                        <AppBarButton Icon="Important" Foreground="Pink" FontWeight="Bold" Label="Collect"></AppBarButton>
+                        <AppBarButton Icon="Delete" Foreground="Pink" FontWeight="Bold" Label="Delete"></AppBarButton>
+                        <AppBarButton Icon="More" Foreground="Pink" FontWeight="Bold" Label="More"></AppBarButton>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal">
+
+                        </StackPanel>
+                        <TextBox PlaceholderText="Title"  TextAlignment="Left"  FontSize="36" Padding="20,20,20,10" BorderThickness="0,0,0,0" />
+                        <TextBox PlaceholderText="Context"  TextAlignment="Left" Height="650" FontSize="24" Padding="30,0,20,20" BorderThickness="0,0,0,0" />
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </StackPanel>
+</Page>
