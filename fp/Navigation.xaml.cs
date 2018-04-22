@@ -47,6 +47,9 @@ namespace fp
                     case "New":
                         contentFrame.Navigate(typeof(note));
                         break;
+                    case "Search":
+                        contentFrame.Navigate(typeof(Search));
+                        break;
                 }
             }
 
