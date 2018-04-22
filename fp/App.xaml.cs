@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using UserLibrary;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
@@ -32,26 +33,14 @@ namespace fp
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
-            DbPath = Path.Combine(ApplicationData.Current.LocalFolder.Path, "notes.db");
+            using (var db = new MyDatabaseContext())
+            {
+                db.Database.Migrate();
+            }
 
-            try
-            {
-                using (var con = new UserLibrary.NoteDbContext())
-                {
-                    con.DbFilePath = DbPath;
 
-                    con.Database.Migrate();
-                }
-            }
-            catch (NotSupportedException ex)
-            {
-            }
-            catch (Exception ex)
-            {
-            }
 
         }
-        public static string DbPath { get; set; }
 
         /// <summary>
         /// 在应用程序由最终用户正常启动时进行调用。

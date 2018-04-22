@@ -31,10 +31,8 @@ namespace fp
 
         private async void Button1_Click(object sender, RoutedEventArgs e)
         {
-            using (var db = new NoteDbContext())
+            using (var db = new MyDatabaseContext())
             {
-
-                db.DbFilePath = App.DbPath;
 
                 var user1 = new User { UserName = SignupBox1.Text.ToString() , Password = SignupPasswordBox.Text.ToString() };
                 db.Users.Add(user1);
@@ -54,11 +52,22 @@ namespace fp
 
         private async void QButton_Click(object sender, RoutedEventArgs e)
         {
-            using (var db = new NoteDbContext())
+            using (var db = new MyDatabaseContext())
             {
-                db.DbFilePath = App.DbPath;
+
                 QButton.Content = await db.Users.CountAsync();
 
+            }
+        }
+
+        private async void DButton_Click(object sender, RoutedEventArgs e)
+        {
+            using (var db = new MyDatabaseContext())
+            {
+                var user1 = new User { UserName = "123" };
+                db.Users.Attach(user1);
+                db.Users.Remove(user1);
+                await db.SaveChangesAsync();
             }
         }
     }

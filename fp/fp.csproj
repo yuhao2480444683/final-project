@@ -164,7 +164,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\UserLibrary\UserLibrary.csproj">
-      <Project>{6afb5018-c3c2-438b-a46b-6ce157f328bc}</Project>
+      <Project>{3fb32e8d-9a39-4c4a-b488-7758f86742fe}</Project>
       <Name>UserLibrary</Name>
     </ProjectReference>
   </ItemGroup>

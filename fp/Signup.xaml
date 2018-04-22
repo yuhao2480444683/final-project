@@ -32,8 +32,8 @@
                                 <StackPanel  Orientation="Vertical">
                                     <TextBlock Height="56"></TextBlock>
                                     <TextBox Name="SignupBox1" HorizontalAlignment="Center"  FontSize="26" PlaceholderText="你的邮箱地址"   Width="301" Height="56"></TextBox>
-                                    <TextBlock Height="56"></TextBlock>
-                                    <TextBox   Name="SignupPasswordBox"  Text="设置密码" Foreground="Gray" HorizontalAlignment="Center" FontSize="26" Height="56"   Width="301" ></TextBox>
+                                <Button Name="DButton"  Click="DButton_Click"  FontSize="10" Height="30">Delete</Button>
+                                <TextBox   Name="SignupPasswordBox"  Text="设置密码" Foreground="Gray" HorizontalAlignment="Center" FontSize="26" Height="56"   Width="301" ></TextBox>
                                     <TextBlock Height="56"></TextBlock>
                                     <Button     Name="Button1" Click="Button1_Click"  HorizontalAlignment="Center" Foreground="White" Content="创建账户" Background="Pink" Width="301" Height="56" ></Button>
                                     <Button Name="QButton"  Click="QButton_Click" FontSize="10" Height="30">Qurrey</Button>

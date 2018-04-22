@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace UserLibrary.Migrations
 {
-    public partial class Init : Migration
+    public partial class MyFirstMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,14 +12,14 @@ namespace UserLibrary.Migrations
                 name: "Users",
                 columns: table => new
                 {
-                    UserId = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Password = table.Column<string>(nullable: true),
-                    UserName = table.Column<string>(nullable: false)
+                    UserName = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Users", x => x.UserId);
+                    table.PrimaryKey("PK_Users", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -29,8 +29,8 @@ namespace UserLibrary.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Content = table.Column<string>(nullable: true),
-                    Title = table.Column<string>(nullable: false),
-                    UserId = table.Column<int>(nullable: true)
+                    Title = table.Column<string>(nullable: true),
+                    UserId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -39,18 +39,46 @@ namespace UserLibrary.Migrations
                         name: "FK_Notes_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
-                        principalColumn: "UserId",
-                        onDelete: ReferentialAction.Restrict);
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Tags",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    NoteId = table.Column<int>(nullable: false),
+                    TagName = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Tags", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Tags_Notes_NoteId",
+                        column: x => x.NoteId,
+                        principalTable: "Notes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Notes_UserId",
                 table: "Notes",
                 column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Tags_NoteId",
+                table: "Tags",
+                column: "NoteId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Tags");
+
             migrationBuilder.DropTable(
                 name: "Notes");
 

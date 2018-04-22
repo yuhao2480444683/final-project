@@ -9,11 +9,10 @@ using UserLibrary;
 
 namespace UserLibrary.Migrations
 {
-    [DbContext(typeof(NoteDbContext))]
-    [Migration("20180422092534_Init")]
-    partial class Init
+    [DbContext(typeof(MyDatabaseContext))]
+    partial class MyDatabaseContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -26,10 +25,9 @@ namespace UserLibrary.Migrations
 
                     b.Property<string>("Content");
 
-                    b.Property<string>("Title")
-                        .IsRequired();
+                    b.Property<string>("Title");
 
-                    b.Property<int?>("UserId");
+                    b.Property<int>("UserId");
 
                     b.HasKey("Id");
 
@@ -38,17 +36,32 @@ namespace UserLibrary.Migrations
                     b.ToTable("Notes");
                 });
 
+            modelBuilder.Entity("UserLibrary.Tag", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("NoteId");
+
+                    b.Property<string>("TagName");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NoteId");
+
+                    b.ToTable("Tags");
+                });
+
             modelBuilder.Entity("UserLibrary.User", b =>
                 {
-                    b.Property<int>("UserId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Password");
 
-                    b.Property<string>("UserName")
-                        .IsRequired();
+                    b.Property<string>("UserName");
 
-                    b.HasKey("UserId");
+                    b.HasKey("Id");
 
                     b.ToTable("Users");
                 });
@@ -56,8 +69,17 @@ namespace UserLibrary.Migrations
             modelBuilder.Entity("UserLibrary.Note", b =>
                 {
                     b.HasOne("UserLibrary.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
+                        .WithMany("Notes")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("UserLibrary.Tag", b =>
+                {
+                    b.HasOne("UserLibrary.Note", "Note")
+                        .WithMany("Tags")
+                        .HasForeignKey("NoteId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }
