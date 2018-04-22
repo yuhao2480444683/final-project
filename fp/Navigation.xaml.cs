@@ -31,23 +31,26 @@ namespace fp
         {
 
         }
-        private void NavView_Navigate(NavigationViewItem item)
+    
+
+        private void NavigationView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {
-            switch (item.Tag)
+            if (args.IsSettingsInvoked)
             {
-                case "home":
-                  
-                    break;
-                case "Photo":
-                
-                    break;
-                case "New":
-                    contentframe.Navigate(typeof(note));
-
-                    break;
-
+             //   contentFrame.Navigate(typeof(SettingsPage));
             }
-        }
+            else
+            {
+                //选中项的内容
+                switch (args.InvokedItem)
+                {
+                    case "New":
+                        contentFrame.Navigate(typeof(note));
+                        break;
+                }
+            }
 
+
+        }
     }
 }
