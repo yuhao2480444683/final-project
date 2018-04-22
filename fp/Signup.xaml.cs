@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using UserLibrary;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -27,14 +29,37 @@ namespace fp
             this.InitializeComponent();
         }
 
-        private void Button1_Click(object sender, RoutedEventArgs e)
+        private async void Button1_Click(object sender, RoutedEventArgs e)
         {
-          
+            using (var db = new NoteDbContext())
+            {
+
+                db.DbFilePath = App.DbPath;
+
+                var user1 = new User { UserName = SignupBox1.Text.ToString() , Password = SignupPasswordBox.Text.ToString() };
+                db.Users.Add(user1);
+                await db.SaveChangesAsync();
+            }
+
+
+
+
+
         }
 
         private void HyperlinkButton_Click(object sender, RoutedEventArgs e)
         {
             SignupFrame.Navigate(typeof(MainPage));
+        }
+
+        private async void QButton_Click(object sender, RoutedEventArgs e)
+        {
+            using (var db = new NoteDbContext())
+            {
+                db.DbFilePath = App.DbPath;
+                QButton.Content = await db.Users.CountAsync();
+
+            }
         }
     }
 }
