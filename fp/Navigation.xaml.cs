@@ -50,6 +50,9 @@ namespace fp
                     case "Search":
                         contentFrame.Navigate(typeof(Search));
                         break;
+                    case "Collect":
+                        contentFrame.Navigate(typeof(Collection));
+                        break;
                 }
             }
 
