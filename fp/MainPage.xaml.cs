@@ -1,9 +1,11 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using UserLibrary;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -28,7 +30,7 @@ namespace fp
             this.InitializeComponent();
         }
 
-        private ObservableCollection<String> suggestions;
+       // private ObservableCollection<String> suggestions;
         private void AutoSuggestBox1_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
         {
 
@@ -67,15 +69,50 @@ namespace fp
             SigninFrame.Navigate(typeof(Signup));
         }
 
-        private void Button1_Click(object sender, RoutedEventArgs e)
+        private async void Button1_Click(object sender, RoutedEventArgs e)
         {
-            var username = AutoSuggestBox1.Text.ToString();
-            var password = Passwordbox1.Password;
-
-            if (username == "123" && Passwordbox1.Password == "456" )
+            //AutoSuggestBox1.Text.ToString();
+            //Passwordbox1.Password;
+            using (var db = new MyDatabaseContext())
             {
-                SigninFrame.Navigate(typeof(Navigation));
-            }
+                if (AutoSuggestBox1.Text == null)
+                {
+                    AutoSuggestBox1.Text = "用户名不能为空";
+                }
+                else if (Passwordbox1.Password == null)
+                {
+                    AutoSuggestBox1.Text = "密码不能为空";
+                }
+                    else
+                    {
+                        var Announcement = await db.Users.FirstOrDefaultAsync(m => m.UserName == AutoSuggestBox1.Text);
+
+                        if (Announcement == null)
+                        {
+                            AutoSuggestBox1.Text = "不存在的用户名！";
+
+                        }
+                        else if (Announcement.Password != Passwordbox1.Password)
+                        {
+                                AutoSuggestBox1.Text = "密码输入错误！";
+                        }
+                            else
+                            {
+                                 SigninFrame.Navigate(typeof(Navigation));
+                            }
+
+                            
+
+
+
+                    }
+
+               
+
+
+
+             }
+
         }
     }
 }

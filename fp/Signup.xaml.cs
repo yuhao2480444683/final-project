@@ -33,15 +33,32 @@ namespace fp
         {
             using (var db = new MyDatabaseContext())
             {
+                /*测试代码------------------------*/
 
-                var user1 = new User { UserName = SignupBox1.Text.ToString() , Password = SignupPasswordBox.Text.ToString() };
+
+                /*var user1 = new User { UserName = SignupBox1.Text.ToString(), Password = SignupPasswordBox.Text.ToString() };
                 db.Users.Add(user1);
-                await db.SaveChangesAsync();
+                await db.SaveChangesAsync();*/
+
+
+                /*测试代码------------------------*/
+
+
+                var Announcement = await db.Users.FirstOrDefaultAsync(m => m.UserName == SignupBox1.Text.ToString());
+                 if (Announcement == null)
+                 {
+
+                     var user1 = new User { UserName = SignupBox1.Text, Password = SignupPasswordBox.Text };
+                     db.Users.Add(user1);
+                     await db.SaveChangesAsync();
+
+                 }
+                 else
+                 {
+                     SignupBox1.Text = "重复的用户名！";
+                 }
+
             }
-
-
-
-
 
         }
 
@@ -64,10 +81,18 @@ namespace fp
         {
             using (var db = new MyDatabaseContext())
             {
-                var user1 = new User { UserName = "123" };
-                db.Users.Attach(user1);
-                db.Users.Remove(user1);
-                await db.SaveChangesAsync();
+                var Announcement = await db.Users.FirstOrDefaultAsync(m => m.UserName == SignupBox1.Text);
+                if (Announcement != null)
+                {
+                    db.Users.Remove(Announcement);
+                    await db.SaveChangesAsync();
+                }
+                else
+                {
+                    SignupBox1.Text = "该用户不存在";
+                }
+                 
+
             }
         }
     }
