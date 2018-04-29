@@ -29,10 +29,10 @@
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" >
                         <TextBlock Text="密    码    :" FontSize="18" Margin="70,65,30,40" Foreground="DarkSlateGray"></TextBlock>
-                        <PasswordBox x:Name="Passwordbox1" PlaceholderText="          输入密码" Width="400" FontSize="18" Margin="0,60,0,40" Foreground="SlateGray" BorderThickness="0,0,0,1" BorderBrush="Pink"></PasswordBox>
+                        <PasswordBox  PlaceholderText="          输入密码" Width="400" FontSize="18" Margin="0,60,0,40" Foreground="SlateGray" BorderThickness="0,0,0,1" BorderBrush="Pink"></PasswordBox>
                     </StackPanel>
-                    <Button Name="Button1" Click="Button1_Click"  Content="登  录" BorderBrush="Pink" BorderThickness="2,2,2,2" FontSize="18" Padding="30,10,30,10" Margin="255,15,30,0" Foreground="DarkSlateGray" Background="#FFFFF8F9"></Button>
-                    <HyperlinkButton Foreground="HotPink"  Click="HyperlinkButton_Click"   Content="注册账号" FontSize="20" HorizontalAlignment="Center" Margin="0,30,0,0" ></HyperlinkButton>
+                    <Button Name="Button1" Content="登  录" BorderBrush="Pink" BorderThickness="2,2,2,2" FontSize="18" Padding="30,10,30,10" Margin="255,15,30,0" Foreground="DarkSlateGray" Background="#FFFFF8F9"></Button>
+                    <HyperlinkButton Foreground="HotPink"  Content="注册账号" FontSize="20" HorizontalAlignment="Center" Margin="0,30,0,0" ></HyperlinkButton>
                 </StackPanel>
             </StackPanel>
         </Border>
