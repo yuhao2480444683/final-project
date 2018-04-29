@@ -7,49 +7,55 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <StackPanel Orientation="Vertical" Background="White">
-        <StackPanel Orientation="Horizontal">
-            <StackPanel Orientation="Horizontal">
-                <AppBarButton Icon="Calendar" Foreground="Pink" FontWeight="Bold" Label="Date" Click="AppBarButton_Click"></AppBarButton>
-                <AppBarButton Icon="Library" Foreground="Pink" FontWeight="Bold" Label="Notes"></AppBarButton>
-                <AppBarButton Icon="Important" Foreground="Pink" FontWeight="Bold" Label="Collect"></AppBarButton>
-                <AppBarButton Icon="Delete" Foreground="Pink" FontWeight="Bold" Label="Delete"></AppBarButton>
-                <AppBarButton Icon="More" Foreground="Pink" FontWeight="Bold" Label="More"></AppBarButton>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBox Height="60"  PlaceholderText="Title" FontSize="40" Margin="120,0,80,0" Padding="120,0,120,0"/>
-                <TextBox Height="60"  PlaceholderText="New Tag" FontSize="40" Margin="120,0,80,0" Padding="120,0,120,0"/>
-            </StackPanel>
-        </StackPanel>
-        <StackPanel Orientation="Horizontal">
-            <ComboBox PlaceholderText="FontStyle" 
-                      Margin="0,0,100,0" 
-                      FontSize="40" 
-                      Padding="0,20,0,20" 
-                      Width="200"
-                      SelectionChanged="ComboBox_SelectionChanged"
-                      >
-                <ComboBoxItem Content="宋体"></ComboBoxItem>
-                <ComboBoxItem Content="黑体"></ComboBoxItem>
-            </ComboBox>
-            <ComboBox PlaceholderText="FontSize" Margin="50,0,150,0" FontSize="40" Padding="0,20,0,20"/>
-            <Border  BorderThickness="2,2,2,2" BorderBrush="Gray" Padding="0,20,0,0">
-                <StackPanel Orientation="Horizontal">
-                    <AppBarButton Icon="Bold"></AppBarButton>
-                    <AppBarButton Icon="Character"></AppBarButton>
-                    <AppBarButton Icon="Underline"></AppBarButton>
-                    <AppBarButton Icon="Italic"></AppBarButton>
-                    <AppBarButton Icon="AllApps"></AppBarButton>
-                    <AppBarButton Icon="Emoji2"></AppBarButton>
-                    <AppBarButton Icon="Undo"></AppBarButton>
-                    <AppBarSeparator/>
-                    <AppBarButton Icon="Redo"></AppBarButton>
-                    <AppBarButton Icon="Pictures"></AppBarButton>
+    <StackPanel Background="White" Orientation="Horizontal">
+        <Border >
+        </Border>
+        <Border >
+            <StackPanel Orientation="Vertical" >
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                    <AppBarButton Height="40" Foreground="Pink" Margin="10,10,0,0">
+                        <AppBarButton.Icon>
+                            <FontIcon Glyph="&#xE8EC;"></FontIcon>
+                        </AppBarButton.Icon>
+                    </AppBarButton>
+                    <TextBox PlaceholderText=" Tag1" Width="120" FontSize="18" BorderBrush="#FFFFEBEF" Margin="10,5,0,5" Padding="4,16,0,0" BorderThickness="0,0,0,1"></TextBox>
+                    <TextBox PlaceholderText=" Tag2" Width="120" FontSize="18" BorderBrush="#FFFFEBEF" Margin="10,5,0,5" Padding="4,16,0,0" BorderThickness="0,0,0,1"></TextBox>
+                    <TextBox PlaceholderText=" Tag3" Width="120" FontSize="18" BorderBrush="#FFFFEBEF" Margin="10,5,250,5" Padding="4,16,0,0" BorderThickness="0,0,0,1"></TextBox>
+                    <StackPanel Orientation="Horizontal" Margin="10,0,0,5">
+                        <AppBarButton Icon="Save" Foreground="Pink" FontWeight="Bold" Label="Save"  Width="40" Height="60"></AppBarButton>
+                        <AppBarButton Icon="Library" Foreground="Pink"  FontWeight="Bold" Label="Notes"  Width="40" Height="60" Margin="20,0,0,0"></AppBarButton>
+                        <AppBarButton Icon="SolidStar" Foreground="Pink" FontWeight="Bold" Label="Collect"  Width="40" Height="60" Margin="20,0,0,0"></AppBarButton>
+                        <AppBarButton Icon="Delete" Foreground="Pink" FontWeight="Bold" Label="Delete"  Width="40" Height="60" Margin="20,0,0,0"></AppBarButton>
+                        <AppBarButton Icon="More" Foreground="Pink" FontWeight="Bold" Label="More" Width="40" Height="60" Margin="20,0,480,0"></AppBarButton>
+                    </StackPanel>
                 </StackPanel>
-            </Border>
-        </StackPanel>
-        <StackPanel>
-            <RichEditBox x:Name="Noting" FontSize="48" PlaceholderText="开始记笔记吧……" />
-        </StackPanel>
+                <StackPanel Orientation="Vertical" Padding="20,5,20,30">
+                    <Border BorderBrush="Pink" BorderThickness="0,0,0,1">
+                        <StackPanel Orientation="Horizontal" Padding="30,0,0,0">
+                            <ComboBox Opacity="0.5" PlaceholderText="FontStyle" FontSize="18" Padding="0,13,0,10" Width="115" BorderThickness="0,0,0,0">
+                                <ComboBoxItem Content="宋体"></ComboBoxItem>
+                                <ComboBoxItem Content="黑体"></ComboBoxItem>
+                            </ComboBox>
+                            <AppBarSeparator Opacity=" 0.3"></AppBarSeparator>
+                            <ComboBox Opacity="0.5" Foreground="Gray" PlaceholderText="FontSize" FontSize="18" Padding="10,13,0,10" Width="114" BorderThickness="0,0,0,0">
+                                <ComboBoxItem Content="8"></ComboBoxItem>
+                                <ComboBoxItem Content="10"></ComboBoxItem>
+                                <ComboBoxItem Content="12"></ComboBoxItem>
+                                <ComboBoxItem Content="14"></ComboBoxItem>
+                                <ComboBoxItem Content="16"></ComboBoxItem>
+                            </ComboBox>
+                            <AppBarSeparator Opacity="0.4" ></AppBarSeparator>
+                            <AppBarButton Opacity="0.7" Height="40" Foreground="Gray" Icon="Bold"></AppBarButton>
+                            <AppBarButton Opacity="0.7" Height="40" Foreground="Gray" Icon="Underline"></AppBarButton>
+                            <AppBarButton Opacity="0.7" Height="40" Foreground="Gray" Icon="Italic"></AppBarButton>
+                        </StackPanel>
+                    </Border>
+                    <StackPanel>
+                        <TextBox PlaceholderText="Title"  TextAlignment="Left"  FontSize="36" BorderThickness="0,0,0,0" />
+                        <TextBox PlaceholderText="Context"  TextAlignment="Left" Height="650" FontSize="24" Padding="25,0,0,20" BorderThickness="0,0,0,0" />
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </Border>
     </StackPanel>
 </Page>

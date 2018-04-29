@@ -55,7 +55,6 @@
                     </StackPanel>
                     <StackPanel Orientation="Vertical">
                         <StackPanel Orientation="Horizontal">
-
                         </StackPanel>
                         <TextBox PlaceholderText="Title"  TextAlignment="Left"  FontSize="36" Padding="20,20,20,10" BorderThickness="0,0,0,0" />
                         <TextBox PlaceholderText="Context"  TextAlignment="Left" Height="650" FontSize="24" Padding="30,0,20,20" BorderThickness="0,0,0,0" />
