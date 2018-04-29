@@ -22,7 +22,7 @@
                     <TextBox PlaceholderText=" Tag2" Width="120" FontSize="18" BorderBrush="#FFFFEBEF" Margin="10,5,0,5" Padding="4,16,0,0" BorderThickness="0,0,0,1"></TextBox>
                     <TextBox PlaceholderText=" Tag3" Width="120" FontSize="18" BorderBrush="#FFFFEBEF" Margin="10,5,250,5" Padding="4,16,0,0" BorderThickness="0,0,0,1"></TextBox>
                     <StackPanel Orientation="Horizontal" Margin="10,0,0,5">
-                        <AppBarButton Icon="Save" Foreground="Pink" FontWeight="Bold" Label="Save"  Width="40" Height="60"></AppBarButton>
+                        <AppBarButton Icon="Save" Name="SaveButton" Click="SaveButton_Click"  Foreground="Pink" FontWeight="Bold" Label="Save"  Width="40" Height="60"></AppBarButton>
                         <AppBarButton Icon="Library" Foreground="Pink"  FontWeight="Bold" Label="Notes"  Width="40" Height="60" Margin="20,0,0,0"></AppBarButton>
                         <AppBarButton Icon="SolidStar" Foreground="Pink" FontWeight="Bold" Label="Collect"  Width="40" Height="60" Margin="20,0,0,0"></AppBarButton>
                         <AppBarButton Icon="Delete" Foreground="Pink" FontWeight="Bold" Label="Delete"  Width="40" Height="60" Margin="20,0,0,0"></AppBarButton>

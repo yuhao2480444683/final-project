@@ -9,7 +9,7 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-            <NavigationView Loaded="NavigationView_Loaded" IsSettingsVisible="True" IsTabStop="False" ItemInvoked="NavigationView_ItemInvoked">
+            <NavigationView Loaded="NavigationView_Loaded" Foreground="Pink" IsSettingsVisible="True" IsTabStop="False" ItemInvoked="NavigationView_ItemInvoked">
             <NavigationView.MenuItems>
                 <NavigationViewItem Content="Home" Tag="Home">
                     <NavigationViewItem.Icon>
@@ -54,9 +54,13 @@
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
             </NavigationView.MenuItems>
-                
-            <NavigationView.Content>
+            <NavigationView.Header>
+                简记
+            </NavigationView.Header>
+                <NavigationView.Content>
                 <Frame Name="contentFrame"/>
+
+   
             </NavigationView.Content>
 
         </NavigationView>

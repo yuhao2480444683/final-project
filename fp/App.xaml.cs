@@ -29,6 +29,10 @@ namespace fp
         /// 初始化单一实例应用程序对象。这是执行的创作代码的第一行，
         /// 已执行，逻辑上等同于 main() 或 WinMain()。
         /// </summary>
+        public static string ThisUserName;
+        public static int ThisUserId;
+        public static int NewUserId = 0;
+        public static int NewNoteId = 0;
         public App()
         {
             this.InitializeComponent();
@@ -41,7 +45,7 @@ namespace fp
 
 
         }
-
+        
         /// <summary>
         /// 在应用程序由最终用户正常启动时进行调用。
         /// 将在启动应用程序以打开特定文件等情况下使用。

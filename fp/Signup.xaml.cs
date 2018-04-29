@@ -48,9 +48,10 @@ namespace fp
                  if (Announcement == null)
                  {
 
-                     var user1 = new User { UserName = SignupBox1.Text, Password = SignupPasswordBox.Text };
+                     var user1 = new User {Id = App.NewUserId,  UserName = SignupBox1.Text, Password = SignupPasswordBox.Text };
                      db.Users.Add(user1);
                      await db.SaveChangesAsync();
+                    App.NewUserId += 1;
 
                  }
                  else

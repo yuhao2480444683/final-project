@@ -29,7 +29,7 @@ namespace fp
 
         private void NavigationView_Loaded(object sender, RoutedEventArgs e)
         {
-
+            contentFrame.Navigate(typeof(Home));
         }
     
 
@@ -52,6 +52,9 @@ namespace fp
                         break;
                     case "Collect":
                         contentFrame.Navigate(typeof(Collection));
+                        break;
+                    case "Home":
+                        contentFrame.Navigate(typeof(Home));
                         break;
                 }
             }

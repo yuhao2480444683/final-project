@@ -23,6 +23,7 @@ namespace fp
     /// <summary>
     /// 可用于自身或导航至 Frame 内部的空白页。
     /// </summary>
+    
     public sealed partial class MainPage : Page
     {
         public MainPage()
@@ -98,7 +99,11 @@ namespace fp
                         }
                             else
                             {
+
+                                 App.ThisUserName = AutoSuggestBox1.Text;
+                                 App.ThisUserId = Announcement.Id;
                                  SigninFrame.Navigate(typeof(Navigation));
+
                             }
 
                             
