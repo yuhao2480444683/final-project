@@ -22,7 +22,17 @@
                     <TextBox PlaceholderText=" Tag2" Width="120" FontSize="18" BorderBrush="#FFFFEBEF" Margin="10,5,0,5" Padding="4,16,0,0" BorderThickness="0,0,0,1"></TextBox>
                     <TextBox PlaceholderText=" Tag3" Width="120" FontSize="18" BorderBrush="#FFFFEBEF" Margin="10,5,250,5" Padding="4,16,0,0" BorderThickness="0,0,0,1"></TextBox>
                     <StackPanel Orientation="Horizontal" Margin="10,0,0,5">
-                        <AppBarButton Icon="Save" Name="SaveButton" Click="SaveButton_Click"  Foreground="Pink" FontWeight="Bold" Label="Save"  Width="40" Height="60"></AppBarButton>
+                        <AppBarButton Icon="Save"
+                                      Foreground="Pink"
+                                      Click="SaveButton_Click" 
+                                      ToolTipService.ToolTip="Save file" 
+                                      RelativePanel.RightOf="openFileButton" 
+                                      Margin="8,0,0,0"/>
+                        <AppBarButton x:Name="openFileButton" 
+                                      Icon="OpenFile"
+                                      Foreground="Pink"
+                                      Click="OpenButton_Click" 
+                                      ToolTipService.ToolTip="Open file"/>
                         <AppBarButton Icon="Library" Foreground="Pink"  FontWeight="Bold" Label="Notes"  Width="40" Height="60" Margin="20,0,0,0"></AppBarButton>
                         <AppBarButton Icon="SolidStar" Foreground="Pink" FontWeight="Bold" Label="Collect"  Width="40" Height="60" Margin="20,0,0,0"></AppBarButton>
                         <AppBarButton Icon="Delete" Foreground="Pink" FontWeight="Bold" Label="Delete"  Width="40" Height="60" Margin="20,0,0,0"></AppBarButton>
@@ -45,14 +55,30 @@
                                 <ComboBoxItem Content="16"></ComboBoxItem>
                             </ComboBox>
                             <AppBarSeparator Opacity="0.4" ></AppBarSeparator>
-                            <AppBarButton Opacity="0.7" Height="40" Foreground="Gray" Icon="Bold"></AppBarButton>
-                            <AppBarButton Opacity="0.7" Height="40" Foreground="Gray" Icon="Underline"></AppBarButton>
-                            <AppBarButton Opacity="0.7" Height="40" Foreground="Gray" Icon="Italic"></AppBarButton>
+                            <AppBarButton Icon="Bold" 
+                                          Click="BoldButton_Click" 
+                                          ToolTipService.ToolTip="Bold" 
+                                          RelativePanel.LeftOf="italicButton" 
+                                          Margin="0,0,8,0"/>
+                            <AppBarButton x:Name="italicButton" 
+                                          Icon="Italic" 
+                                          Click="ItalicButton_Click" 
+                                          ToolTipService.ToolTip="Italic" 
+                                          RelativePanel.LeftOf="underlineButton" 
+                                          Margin="0,0,8,0"/>
+                            <AppBarButton x:Name="underlineButton" 
+                                          Icon="Underline" 
+                                          Click="UnderlineButton_Click" 
+                                          ToolTipService.ToolTip="Underline" 
+                                          RelativePanel.AlignRightWithPanel="True"/>
                         </StackPanel>
                     </Border>
                     <StackPanel>
                         <TextBox PlaceholderText="Title"  TextAlignment="Left"  FontSize="36" BorderThickness="0,0,0,0" />
-                        <TextBox PlaceholderText="Context"  TextAlignment="Left" Height="650" FontSize="24" Padding="25,0,0,20" BorderThickness="0,0,0,0" />
+                        <RichEditBox x:Name="editor" 
+                                         Height="200" 
+                                         RelativePanel.Below="openFileButton" 
+                  RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True"/>
                     </StackPanel>
                 </StackPanel>
             </StackPanel>
