@@ -7,81 +7,115 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <StackPanel Background="White" Orientation="Horizontal">
-        <Border >
-        </Border>
-        <Border >
-            <StackPanel Orientation="Vertical" >
-                <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
-                    <AppBarButton Height="40" Foreground="Pink" Margin="10,10,0,0">
-                        <AppBarButton.Icon>
-                            <FontIcon Glyph="&#xE8EC;"></FontIcon>
-                        </AppBarButton.Icon>
-                    </AppBarButton>
-                    <TextBox PlaceholderText=" Tag1" Width="120" FontSize="18" BorderBrush="#FFFFEBEF" Margin="10,5,0,5" Padding="4,16,0,0" BorderThickness="0,0,0,1"></TextBox>
-                    <TextBox PlaceholderText=" Tag2" Width="120" FontSize="18" BorderBrush="#FFFFEBEF" Margin="10,5,0,5" Padding="4,16,0,0" BorderThickness="0,0,0,1"></TextBox>
-                    <TextBox PlaceholderText=" Tag3" Width="120" FontSize="18" BorderBrush="#FFFFEBEF" Margin="10,5,250,5" Padding="4,16,0,0" BorderThickness="0,0,0,1"></TextBox>
-                    <StackPanel Orientation="Horizontal" Margin="10,0,0,5">
-                        <AppBarButton Icon="Save"
-                                      Foreground="Pink"
-                                      Click="SaveButton_Click" 
-                                      ToolTipService.ToolTip="Save file" 
-                                      RelativePanel.RightOf="openFileButton" 
-                                      Margin="8,0,0,0"/>
-                        <AppBarButton x:Name="openFileButton" 
-                                      Icon="OpenFile"
-                                      Foreground="Pink"
-                                      Click="OpenButton_Click" 
-                                      ToolTipService.ToolTip="Open file"/>
-                        <AppBarButton Icon="Library" Foreground="Pink"  FontWeight="Bold" Label="Notes"  Width="40" Height="60" Margin="20,0,0,0"></AppBarButton>
-                        <AppBarButton Icon="SolidStar" Foreground="Pink" FontWeight="Bold" Label="Collect"  Width="40" Height="60" Margin="20,0,0,0"></AppBarButton>
-                        <AppBarButton Icon="Delete" Foreground="Pink" FontWeight="Bold" Label="Delete"  Width="40" Height="60" Margin="20,0,0,0"></AppBarButton>
-                        <AppBarButton Icon="More" Foreground="Pink" FontWeight="Bold" Label="More" Width="40" Height="60" Margin="20,0,480,0"></AppBarButton>
-                    </StackPanel>
-                </StackPanel>
-                <StackPanel Orientation="Vertical" Padding="20,5,20,30">
-                    <Border BorderBrush="Pink" BorderThickness="0,0,0,1">
-                        <StackPanel Orientation="Horizontal" Padding="30,0,0,0">
-                            <ComboBox Opacity="0.5" PlaceholderText="FontStyle" FontSize="18" Padding="0,13,0,10" Width="115" BorderThickness="0,0,0,0">
-                                <ComboBoxItem Content="宋体"></ComboBoxItem>
-                                <ComboBoxItem Content="黑体"></ComboBoxItem>
-                            </ComboBox>
-                            <AppBarSeparator Opacity=" 0.3"></AppBarSeparator>
-                            <ComboBox Opacity="0.5" Foreground="Gray" PlaceholderText="FontSize" FontSize="18" Padding="10,13,0,10" Width="114" BorderThickness="0,0,0,0">
-                                <ComboBoxItem Content="8"></ComboBoxItem>
-                                <ComboBoxItem Content="10"></ComboBoxItem>
-                                <ComboBoxItem Content="12"></ComboBoxItem>
-                                <ComboBoxItem Content="14"></ComboBoxItem>
-                                <ComboBoxItem Content="16"></ComboBoxItem>
-                            </ComboBox>
-                            <AppBarSeparator Opacity="0.4" ></AppBarSeparator>
-                            <AppBarButton Icon="Bold" 
-                                          Click="BoldButton_Click" 
-                                          ToolTipService.ToolTip="Bold" 
-                                          RelativePanel.LeftOf="italicButton" 
-                                          Margin="0,0,8,0"/>
-                            <AppBarButton x:Name="italicButton" 
-                                          Icon="Italic" 
-                                          Click="ItalicButton_Click" 
-                                          ToolTipService.ToolTip="Italic" 
-                                          RelativePanel.LeftOf="underlineButton" 
-                                          Margin="0,0,8,0"/>
-                            <AppBarButton x:Name="underlineButton" 
-                                          Icon="Underline" 
-                                          Click="UnderlineButton_Click" 
-                                          ToolTipService.ToolTip="Underline" 
-                                          RelativePanel.AlignRightWithPanel="True"/>
-                        </StackPanel>
-                    </Border>
-                    <StackPanel>
-                        <TextBox PlaceholderText="Title"  TextAlignment="Left"  FontSize="36" BorderThickness="0,0,0,0" />
-                        <RichEditBox x:Name="editor" 
-                                         Height="200" 
-                                         RelativePanel.Below="openFileButton" 
-                  RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True"/>
-                    </StackPanel>
-                </StackPanel>
-            </StackPanel>
-        </Border>
-    </StackPanel>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <RelativePanel BorderBrush="Pink" BorderThickness="2" CornerRadius="10" Padding="12">
+            <AppBarButton x:Name="Tag" Foreground="Pink" >
+                <AppBarButton.Icon>
+                    <FontIcon Glyph="&#xE8EC;"></FontIcon>
+                </AppBarButton.Icon>
+            </AppBarButton>
+            <TextBox x:Name="Tag1" MinWidth="100" RelativePanel.RightOf="Tag"/>
+            <TextBox x:Name="Tag2" MinWidth="100" RelativePanel.RightOf="Tag1"/>
+            <TextBox x:Name="Tag3" MinWidth="100" RelativePanel.RightOf="Tag2"/>
+            <TextBox x:Name="Tag4" MinWidth="100" RelativePanel.RightOf="Tag3"/>
+
+            <AppBarButton x:Name="Save" 
+                          Icon="Save"
+                          Foreground="Pink"
+                          FontWeight="Bold" 
+                          Label="保存"
+                          Click="SaveButton_Click" 
+                          ToolTipService.ToolTip="Save file" 
+                          RelativePanel.RightOf="Tag4" 
+                          Margin="8,0,0,0"/>
+            <AppBarButton x:Name="openFileButton" 
+                          Icon="OpenFile"
+                          Foreground="Pink"
+                          FontWeight="Bold" 
+                          Label="打开"
+                          Click="OpenButton_Click" 
+                          ToolTipService.ToolTip="Open file"
+                          RelativePanel.RightOf="Save"/>
+            <AppBarButton x:Name="Notes" 
+                          Icon="Library" 
+                          Foreground="Pink"  
+                          FontWeight="Bold" 
+                          Label="笔记"  
+                          Width="40" 
+                          Height="60" 
+                          RelativePanel.RightOf="openFileButton"
+                          Margin="20,0,0,0"/>
+            <AppBarButton x:Name="Solid" 
+                          Icon="SolidStar" 
+                          Foreground="Pink" 
+                          FontWeight="Bold" 
+                          Label="收藏"  
+                          Width="40" 
+                          Height="60"
+                          RelativePanel.RightOf="Notes"
+                          Margin="20,0,0,0"/>
+            <!-- Width is not set on the green and yellow rectangles.
+         It's determined by the RelativePanel properties. -->
+            <ComboBox x:Name="ziti" 
+                      Opacity="0.5" 
+                      PlaceholderText="FontStyle" 
+                      FontSize="18" 
+                      MinHeight="40" 
+                      MinWidth="100"
+                      RelativePanel.Below="Tag" 
+                      RelativePanel.AlignLeftWith="Tag" 
+                      RelativePanel.AlignRightWith="Tag1">
+                <ComboBoxItem Content="宋体"></ComboBoxItem>
+                <ComboBoxItem Content="黑体"></ComboBoxItem>
+            </ComboBox>
+
+            <ComboBox x:Name="zihao" 
+                      Opacity="0.5" 
+                      PlaceholderText="FontSize" 
+                      FontSize="18" 
+                      MinHeight="40" 
+                      MinWidth="100" 
+                      RelativePanel.RightOf="ziti" 
+                      RelativePanel.Below="Tag" 
+                      RelativePanel.AlignRightWithPanel="True">
+                <ComboBoxItem Content="8"></ComboBoxItem>
+                <ComboBoxItem Content="10"></ComboBoxItem>
+                <ComboBoxItem Content="12"></ComboBoxItem>
+                <ComboBoxItem Content="14"></ComboBoxItem>
+                <ComboBoxItem Content="16"></ComboBoxItem>
+            </ComboBox>
+            <AppBarButton x:Name="boldButton"
+                          Icon="Bold" 
+                          Click="BoldButton_Click" 
+                          ToolTipService.ToolTip="Bold" 
+                          RelativePanel.Below="Tag"
+                          RelativePanel.RightOf="ziti" 
+                          Margin="308,0,-308,0" RenderTransformOrigin="0.5,0.517"/>
+            <AppBarButton x:Name="italicButton" 
+                          Icon="Italic" 
+                          Click="ItalicButton_Click" 
+                          ToolTipService.ToolTip="Italic"
+                          RelativePanel.AlignLeftWithPanel="True" 
+                          RelativePanel.Below="openFileButton"
+                          Margin="544,0,-544,0" />
+            <AppBarButton x:Name="underlineButton" 
+                          Icon="Underline" 
+                          Click="UnderlineButton_Click" 
+                          ToolTipService.ToolTip="Underline" 
+                          RelativePanel.AlignLeftWithPanel="True" 
+                          RelativePanel.Below="Notes" 
+                          Margin="619,0,-619,0" />
+            <TextBox x:Name="title"
+                     PlaceholderText="Title"  
+                     TextAlignment="Left" 
+                     FontSize="36" 
+                     RelativePanel.Below="ziti"
+                     Margin="0,0,0,0" />
+            <RichEditBox x:Name="editor" 
+                         Height="200" 
+                         RelativePanel.Below="title" 
+                         RelativePanel.AlignLeftWithPanel="True" 
+                         RelativePanel.AlignRightWithPanel="True"/>
+        </RelativePanel>
+    </Grid>
 </Page>
