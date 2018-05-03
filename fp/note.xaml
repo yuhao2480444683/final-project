@@ -7,7 +7,16 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources >
+        <ResourceDictionary>
+            <AcrylicBrush x:Key="Scenerybrush"
+                  BackgroundSource="HostBackdrop"
+                  TintOpacity="0.3"
+                  TintColor="WhiteSmoke" 
+                  FallbackColor="White"/>
+        </ResourceDictionary>
+    </Page.Resources>
+       <Grid Background="{ThemeResource Scenerybrush}">
         <RelativePanel BorderBrush="Pink" BorderThickness="2" CornerRadius="10" Padding="12">
             <AppBarButton x:Name="Tag" Foreground="Pink" >
                 <AppBarButton.Icon>
@@ -85,21 +94,24 @@
                 <ComboBoxItem Content="16"></ComboBoxItem>
             </ComboBox>
             <AppBarButton x:Name="boldButton"
-                          Icon="Bold" 
+                          Icon="Bold"
+                          Foreground="Pink"
                           Click="BoldButton_Click" 
                           ToolTipService.ToolTip="Bold" 
                           RelativePanel.Below="Tag"
                           RelativePanel.RightOf="ziti" 
                           Margin="308,0,-308,0" RenderTransformOrigin="0.5,0.517"/>
             <AppBarButton x:Name="italicButton" 
-                          Icon="Italic" 
+                          Icon="Italic"
+                          Foreground="Pink"
                           Click="ItalicButton_Click" 
                           ToolTipService.ToolTip="Italic"
                           RelativePanel.AlignLeftWithPanel="True" 
                           RelativePanel.Below="openFileButton"
                           Margin="544,0,-544,0" />
             <AppBarButton x:Name="underlineButton" 
-                          Icon="Underline" 
+                          Icon="Underline"
+                          Foreground="Pink"
                           Click="UnderlineButton_Click" 
                           ToolTipService.ToolTip="Underline" 
                           RelativePanel.AlignLeftWithPanel="True" 
