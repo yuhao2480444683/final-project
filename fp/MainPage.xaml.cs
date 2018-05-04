@@ -31,39 +31,6 @@ namespace fp
             this.InitializeComponent();
         }
 
-       // private ObservableCollection<String> suggestions;
-        private void AutoSuggestBox1_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
-        {
-
-            if (args.ChosenSuggestion != null)
-
-                AutoSuggestBox1.Text = args.ChosenSuggestion.ToString();
-
-            else
-
-                AutoSuggestBox1.Text = sender.Text;
-        }
-
-        private void AutoSuggestBox1_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
-        {
-            AutoSuggestBox1.Text = "Choosen";
-        }
-
-        private void AutoSuggestBox1_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
-        {
-           /* if (args.Reason == AutoSuggestionBoxTextChangeReason.UserInput)
-
-            {
-
-                suggestions.Clear();
-
-                suggestions.Add(sender.Text + "1");
-
-
-                sender.ItemsSource = suggestions;
-
-            }*/
-        }
 
         private void HyperlinkButton_Click(object sender, RoutedEventArgs e)
         {
@@ -76,31 +43,31 @@ namespace fp
             //Passwordbox1.Password;
             using (var db = new MyDatabaseContext())
             {
-                if (AutoSuggestBox1.Text == null)
+                if (SigninUser.Text == null)
                 {
-                    AutoSuggestBox1.Text = "用户名不能为空";
+                    SigninUser.Text = "用户名不能为空";
                 }
-                else if (Passwordbox1.Password == null)
+                else if (SigninPassword.Password == null)
                 {
-                    AutoSuggestBox1.Text = "密码不能为空";
+                    SigninUser.Text = "密码不能为空";
                 }
                     else
                     {
-                        var Announcement = await db.Users.FirstOrDefaultAsync(m => m.UserName == AutoSuggestBox1.Text);
+                        var Announcement = await db.Users.FirstOrDefaultAsync(m => m.UserName == SigninUser.Text);
 
                         if (Announcement == null)
                         {
-                            AutoSuggestBox1.Text = "不存在的用户名！";
+                        SigninUser.Text = "不存在的用户名！";
 
                         }
-                        else if (Announcement.Password != Passwordbox1.Password)
+                        else if (Announcement.Password != SigninPassword.Password)
                         {
-                                AutoSuggestBox1.Text = "密码输入错误！";
+                        SigninUser.Text = "密码输入错误！";
                         }
                             else
                             {
 
-                                 App.ThisUserName = AutoSuggestBox1.Text;
+                                 App.ThisUserName = SigninUser.Text;
                                  App.ThisUserId = Announcement.Id;
                                  SigninFrame.Navigate(typeof(Navigation));
 

@@ -44,30 +44,34 @@ namespace fp
                 /*测试代码------------------------*/
 
 
-                var Announcement = await db.Users.FirstOrDefaultAsync(m => m.UserName == SignupBox1.Text.ToString());
+                var Announcement = await db.Users.FirstOrDefaultAsync(m => m.UserName == SignupUser.Text.ToString());
                  if (Announcement == null)
                  {
 
-                     var user1 = new User {Id = App.NewUserId,  UserName = SignupBox1.Text, Password = SignupPasswordBox.Text };
+                     var user1 = new User {Id = App.NewUserId,  UserName = SignupUser.Text, Password = SignupPassword.Text };
                      db.Users.Add(user1);
                      await db.SaveChangesAsync();
                     App.NewUserId += 1;
 
-                 }
+                    SignupUser.Text = "创建成功！";
+
+                }
                  else
                  {
-                     SignupBox1.Text = "重复的用户名！";
+                     SignupUser.Text = "重复的用户名！";
                  }
 
             }
 
         }
-
+        
         private void HyperlinkButton_Click(object sender, RoutedEventArgs e)
         {
             SignupFrame.Navigate(typeof(MainPage));
         }
 
+
+        /*
         private async void QButton_Click(object sender, RoutedEventArgs e)
         {
             using (var db = new MyDatabaseContext())
@@ -95,6 +99,6 @@ namespace fp
                  
 
             }
-        }
+        }*/
     }
 }
