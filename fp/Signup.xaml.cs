@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using fp.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -43,6 +44,7 @@ namespace fp
 
                 /*测试代码------------------------*/
 
+                
 
                 var Announcement = await db.Users.FirstOrDefaultAsync(m => m.UserName == SignupUser.Text.ToString());
                  if (Announcement == null)

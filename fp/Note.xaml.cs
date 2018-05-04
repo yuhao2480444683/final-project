@@ -185,14 +185,7 @@ namespace fp
                 }
 
 
-
-
-
-
             }
-
-
-
 
 
         }
@@ -249,6 +242,8 @@ namespace fp
         private async void Notes_Click(object sender, RoutedEventArgs e)
         {
 
+
+           // string editorcontent = editor.Document.GetText(editor, editorcontent);
             if(title.Text !=null || editor.Document!=null)
             {
 

@@ -11,27 +11,28 @@
     >
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="Auto"></RowDefinition>
-        </Grid.RowDefinitions>
-            
-        <GridView ItemsSource="{x:Bind NoteCollection}"  Width="300" HorizontalAlignment="Left">
-            <GridView.ItemTemplate>
-                <DataTemplate x:DataType="UserLibrary:Note">
-                    <StackPanel Margin="20">
+        <StackPanel Orientation="Horizontal">
 
-                        <TextBlock Text="{x:Bind Title}" FontSize="48" Width="300"  Height="50"></TextBlock>
-                        <TextBlock Text="{x:Bind Content}" FontSize="48" Width="300" Height="50"></TextBlock>
-                    </StackPanel>
-                </DataTemplate>
-            </GridView.ItemTemplate>
-        </GridView>
-      
-        <StackPanel Grid.Row="1">
-            <Button Name="newButton" Content="Add a new Note" Click="newButton_Click"></Button>
-            <TextBox Name="textTitle"></TextBox>
-            <TextBox Name="textContent"></TextBox>
+
+            <GridView  ItemsSource="{x:Bind NoteCollection}"  Width="300" HorizontalAlignment="Left"   IsItemClickEnabled="True"  ItemClick="GridView_ItemClick">
+                <GridView.ItemTemplate>
+                    <DataTemplate x:DataType="UserLibrary:Note">
+                        <StackPanel Margin="20">
+                            <TextBlock Text="{x:Bind Title}" FontSize="40" Width="300"  Height="50"></TextBlock>
+
+                        </StackPanel>
+                    </DataTemplate>
+                </GridView.ItemTemplate>
+
+            </GridView>
+            <StackPanel >
+                <TextBox Name="Titlebox" Width="300" Height="70" FontSize="48"></TextBox>
+                <TextBox Name="Contentbox"  FontSize="30"  Height="300" Width="700"></TextBox>
+                <Button Name="Delete" Click="Delete_Click" Width="200" Height="100" FontSize="30">删除笔记，请刷新</Button>
+            </StackPanel>
+
         </StackPanel>
+       
+
     </Grid>
 </Page>

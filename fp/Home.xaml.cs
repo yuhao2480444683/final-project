@@ -37,7 +37,7 @@ namespace fp
         {
             this.InitializeComponent();
         }
-
+/*
         private async void newButton_Click(object sender, RoutedEventArgs e)
         {
             var n = new Note
@@ -54,7 +54,7 @@ namespace fp
             
 
         }
-
+*/
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
             List <Note> models;
@@ -63,10 +63,33 @@ namespace fp
             {
                 if(item.Title !=null || item.Content !=null)
                 {
-                    NoteCollection.Add(item);
+                    if(item.UserId == App.ThisUserId)
+                        NoteCollection.Add(item);
                 }
             }
                 // db.Users.FirstOrDefaultAsync(m => m.UserName == SignupBox1.Text);
+        }
+
+        private void GridView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+           var thisnote = (Note)e.ClickedItem;
+            Titlebox.Text = thisnote.Title;
+            Contentbox.Text = thisnote.Content;
+        }
+
+        private async void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            var Announcement = await Database.Context.Notes.FirstOrDefaultAsync(m => m.Title == Titlebox.Text);
+            if (Announcement != null)
+            {
+                Database.Context.Notes.Remove(Announcement);
+                await Database.Context.SaveChangesAsync();
+            }
+            else
+            {
+                Titlebox.Text = "该笔记不存在";
+            }
         }
     }
 }
