@@ -9,30 +9,39 @@
     mc:Ignorable="d"
     Loaded="Page_Loaded"
     >
-
+    <Page.Resources >
+        <ResourceDictionary>
+            <AcrylicBrush x:Key="Scenerybrush"
+                  BackgroundSource="HostBackdrop"
+                  TintOpacity="0.3"
+                  TintColor="White" 
+                  FallbackColor="White"/>
+        </ResourceDictionary>
+    </Page.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <StackPanel Orientation="Horizontal">
+
+        
+        <Grid Background="{ThemeResource Scenerybrush}">
+            <RelativePanel BorderBrush="Pink" BorderThickness="2" CornerRadius="10" Padding="12" >
+                <Border x:Name="girdview" BorderBrush="Pink" BorderThickness="0,0,1,0" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignLeftWithPanel="True">
+                    <GridView  ItemsSource="{x:Bind NoteCollection}"  Width="300" HorizontalAlignment="Left"   IsItemClickEnabled="True"  ItemClick="GridView_ItemClick">
+                        <GridView.ItemTemplate>
+                            <DataTemplate x:DataType="UserLibrary:Note">
+                                <StackPanel Margin="10">
+                                    <TextBlock Text="{x:Bind Title}" FontSize="24" Width="300"  ></TextBlock>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridView.ItemTemplate>
+
+                    </GridView>
+                </Border>
+                <TextBox Name="Titlebox" Margin="12,0,0,0" Height="70" FontSize="36" RelativePanel.RightOf="girdview" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignRightWithPanel="True"></TextBox>
+                <TextBox Name="Contentbox" Margin="12,0,0,0" FontSize="24"  Height="200" RelativePanel.RightOf="girdview" RelativePanel.Below="Titlebox"  RelativePanel.AlignRightWithPanel="True"></TextBox>
+                <Button Name="Delete" Click="Delete_Click" Height="70" RelativePanel.RightOf="girdview" RelativePanel.Below="Contentbox"  BorderBrush="Pink" BorderThickness="1,1,1,1" FontSize="18" Padding="30,10,30,10" Margin="12,15,30,0" Foreground="DarkSlateGray" Background="White">删除笔记，请刷新</Button>
+
+            </RelativePanel>
 
 
-            <GridView  ItemsSource="{x:Bind NoteCollection}"  Width="300" HorizontalAlignment="Left"   IsItemClickEnabled="True"  ItemClick="GridView_ItemClick">
-                <GridView.ItemTemplate>
-                    <DataTemplate x:DataType="UserLibrary:Note">
-                        <StackPanel Margin="20">
-                            <TextBlock Text="{x:Bind Title}" FontSize="40" Width="300"  Height="50"></TextBlock>
-
-                        </StackPanel>
-                    </DataTemplate>
-                </GridView.ItemTemplate>
-
-            </GridView>
-            <StackPanel >
-                <TextBox Name="Titlebox" Width="300" Height="70" FontSize="48"></TextBox>
-                <TextBox Name="Contentbox"  FontSize="30"  Height="300" Width="700"></TextBox>
-                <Button Name="Delete" Click="Delete_Click" Width="200" Height="100" FontSize="30">删除笔记，请刷新</Button>
-            </StackPanel>
-
-        </StackPanel>
-       
-
+        </Grid>
     </Grid>
 </Page>
