@@ -1,8 +1,10 @@
-﻿using System;
+﻿using fp.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using UserLibrary;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -142,11 +144,75 @@ namespace fp
 
         }
 
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void FontsizeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-           
+
+            Windows.UI.Text.ITextSelection selectedText = editor.Document.Selection;
+            if (selectedText != null)
+            {
+                var combo = (ComboBox)sender;
+                var item =  (ComboBoxItem)combo.SelectedItem;
+                var fontsize = item.Content.ToString();
+                Windows.UI.Text.ITextCharacterFormat charFormatting = selectedText.CharacterFormat;
+                if (fontsize == "8")
+                {
+                   
+                    charFormatting.Size = 8;
+
+                }
+                else if (fontsize == "10")
+                {
+
+                    charFormatting.Size = 10;
+
+                }
+                else if (fontsize == "12")
+                {
+
+                    charFormatting.Size = 12;
+
+                }
+                else if (fontsize == "14")
+                {
+
+                    charFormatting.Size = 14;
+
+                }
+                else if (fontsize == "16")
+                {
+
+                    charFormatting.Size = 16;
+
+                }
+
+                selectedText.CharacterFormat = charFormatting;
+            }
+
+
+
+
         }
 
+        private async void Notes_Click(object sender, RoutedEventArgs e)
+        {
 
+            if(title.Text !=null || editor.Document!=null)
+            {
+
+                var n = new Note
+                {
+                    Id = App.NewNoteId,
+                    UserId = App.ThisUserId,
+                    Title = title.Text,
+                    Content = editor.Document.ToString(),
+
+                };
+
+                Database.Context.Notes.Add(n);
+                await Database.Context.SaveChangesAsync();
+
+            }
+
+        }
     }
 }

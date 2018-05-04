@@ -52,6 +52,7 @@
                           Label="笔记"  
                           Width="40" 
                           Height="60" 
+                          Click="Notes_Click"
                           RelativePanel.RightOf="openFileButton"
                           Margin="20,0,0,0"/>
             <AppBarButton x:Name="Solid" 
@@ -86,6 +87,7 @@
                       MinWidth="100" 
                       RelativePanel.RightOf="ziti" 
                       RelativePanel.Below="Tag" 
+                      SelectionChanged="FontsizeComboBox_SelectionChanged"
                       RelativePanel.AlignRightWithPanel="True">
                 <ComboBoxItem Content="8"></ComboBoxItem>
                 <ComboBoxItem Content="10"></ComboBoxItem>
