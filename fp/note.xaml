@@ -68,15 +68,20 @@
          It's determined by the RelativePanel properties. -->
             <ComboBox x:Name="ziti" 
                       Opacity="0.5" 
-                      PlaceholderText="FontStyle" 
+                      PlaceholderText="FontColor" 
                       FontSize="18" 
                       MinHeight="40" 
                       MinWidth="100"
                       RelativePanel.Below="Tag" 
+                      SelectionChanged="Fontcolor_SelectionChanged"
                       RelativePanel.AlignLeftWith="Tag" 
                       RelativePanel.AlignRightWith="Tag1">
-                <ComboBoxItem Content="宋体"></ComboBoxItem>
-                <ComboBoxItem Content="黑体"></ComboBoxItem>
+                <ComboBoxItem Content="red"></ComboBoxItem>
+                <ComboBoxItem Content="yellow"></ComboBoxItem>
+                <ComboBoxItem Content="blue"></ComboBoxItem>
+                <ComboBoxItem Content="black"></ComboBoxItem>
+                <ComboBoxItem Content="pink"></ComboBoxItem>
+                
             </ComboBox>
 
             <ComboBox x:Name="zihao" 

@@ -1,6 +1,7 @@
 ﻿using fp.Models;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -14,6 +15,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+
 
 // https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
 
@@ -144,6 +146,60 @@ namespace fp
 
         }
 
+
+
+        private void Fontcolor_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Windows.UI.Text.ITextSelection selectedText = editor.Document.Selection;
+            if (selectedText != null)
+            {
+                var combo = (ComboBox)sender;
+                var item = (ComboBoxItem)combo.SelectedItem;
+                var fontcolor = item.Content.ToString();
+                Windows.UI.Text.ITextCharacterFormat charFormatting = selectedText.CharacterFormat;
+               
+                if (fontcolor =="red")
+                {
+                    Color c = Color.Red;
+                    charFormatting.ForegroundColor = Windows.UI.Colors.Red;
+                }
+                if (fontcolor == "yellow")
+                {
+                    Color c = Color.Red;
+                    charFormatting.ForegroundColor = Windows.UI.Colors.Yellow;
+                }
+                if (fontcolor == "blue")
+                {
+                    Color c = Color.Red;
+                    charFormatting.ForegroundColor = Windows.UI.Colors.Blue;
+                }
+                if (fontcolor == "black")
+                {
+                    Color c = Color.Red;
+                    charFormatting.ForegroundColor = Windows.UI.Colors.Black;
+                }
+                if (fontcolor == "pink")
+                {
+                    Color c = Color.Red;
+                    charFormatting.ForegroundColor = Windows.UI.Colors.Pink;
+                }
+
+
+
+
+
+
+            }
+
+
+
+
+
+        }
+
+
+
+
         private void FontsizeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
@@ -188,9 +244,6 @@ namespace fp
                 selectedText.CharacterFormat = charFormatting;
             }
 
-
-
-
         }
 
         private async void Notes_Click(object sender, RoutedEventArgs e)
@@ -214,5 +267,6 @@ namespace fp
             }
 
         }
+
     }
 }
