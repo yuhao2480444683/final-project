@@ -1,0 +1,149 @@
+﻿<Page
+    x:Class="fp.note"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:fp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Page.Resources >
+        <ResourceDictionary>
+            <AcrylicBrush x:Key="Scenerybrush"
+                  BackgroundSource="HostBackdrop"
+                  TintOpacity="0.3"
+                  TintColor="WhiteSmoke" 
+                  FallbackColor="White"/>
+        </ResourceDictionary>
+    </Page.Resources>
+       <Grid Background="{ThemeResource Scenerybrush}">
+        <RelativePanel BorderBrush="Pink" BorderThickness="2" CornerRadius="10" Padding="12">
+            <AppBarButton x:Name="Tag" Style="{ThemeResource AppBarButtonRevealStyle}" Foreground="Pink" >
+                <AppBarButton.Icon>
+                    <FontIcon Glyph="&#xE8EC;"></FontIcon>
+                </AppBarButton.Icon>
+            </AppBarButton>
+            <TextBox x:Name="Tag1" MinWidth="100" RelativePanel.RightOf="Tag"/>
+            <TextBox x:Name="Tag2" MinWidth="100" RelativePanel.RightOf="Tag1"/>
+            <TextBox x:Name="Tag3" MinWidth="100" RelativePanel.RightOf="Tag2"/>
+            <TextBox x:Name="Tag4" MinWidth="100" RelativePanel.RightOf="Tag3"/>
+
+            <AppBarButton x:Name="Save" 
+                          Icon="Save"
+                          Foreground="Pink"
+                          FontWeight="Bold" 
+                          Label="保存"
+                          Click="SaveButton_Click" 
+                          ToolTipService.ToolTip="Save file" 
+                          RelativePanel.RightOf="Tag4" 
+                          Margin="8,0,0,0"/>
+            <AppBarButton x:Name="openFileButton" 
+                          Icon="OpenFile"
+                          Foreground="Pink"
+                          FontWeight="Bold" 
+                          Label="打开"
+                          Click="OpenButton_Click" 
+                          ToolTipService.ToolTip="Open file"
+                          RelativePanel.RightOf="Save"/>
+            <AppBarButton x:Name="Notes" 
+                          Icon="Library" 
+                          Foreground="Pink"  
+                          FontWeight="Bold" 
+                          Label="笔记"  
+                          Width="40" 
+                          Height="60" 
+                          Click="Notes_Click"
+                          RelativePanel.RightOf="openFileButton"
+                          Margin="20,0,0,0"/>
+            <AppBarButton x:Name="Solid" 
+                          Icon="SolidStar" 
+                          Foreground="Pink" 
+                          FontWeight="Bold" 
+                          Label="收藏"  
+                          Width="40" 
+                          Height="60"
+                          RelativePanel.RightOf="Notes"
+                          Margin="20,0,0,0"/>
+            <!-- Width is not set on the green and yellow rectangles.
+         It's determined by the RelativePanel properties. -->
+            <ComboBox x:Name="ziti" 
+                      Opacity="0.5" 
+                      PlaceholderText="FontColor" 
+                      FontSize="18" 
+                      MinHeight="40" 
+                      MinWidth="100"
+                      RelativePanel.Below="Tag" 
+                      SelectionChanged="Fontcolor_SelectionChanged"
+                      RelativePanel.AlignLeftWith="Tag" 
+                      RelativePanel.AlignRightWith="Tag1">
+                <ComboBoxItem Content="red"></ComboBoxItem>
+                <ComboBoxItem Content="yellow"></ComboBoxItem>
+                <ComboBoxItem Content="blue"></ComboBoxItem>
+                <ComboBoxItem Content="black"></ComboBoxItem>
+                <ComboBoxItem Content="pink"></ComboBoxItem>
+                
+            </ComboBox>
+
+            <ComboBox x:Name="zihao" 
+                      Opacity="0.5" 
+                      PlaceholderText="FontSize" 
+                      FontSize="18" 
+                      MinHeight="40" 
+                      MinWidth="100" 
+                      RelativePanel.RightOf="ziti" 
+                      RelativePanel.Below="Tag" 
+                      SelectionChanged="FontsizeComboBox_SelectionChanged"
+                      RelativePanel.AlignRightWithPanel="True">
+                <ComboBoxItem Content="8"></ComboBoxItem>
+                <ComboBoxItem Content="10"></ComboBoxItem>
+                <ComboBoxItem Content="12"></ComboBoxItem>
+                <ComboBoxItem Content="14"></ComboBoxItem>
+                <ComboBoxItem Content="16"></ComboBoxItem>
+            </ComboBox>
+            <AppBarButton x:Name="boldButton"
+                          Icon="Bold"
+                          Foreground="Pink"
+                          Click="BoldButton_Click" 
+                          ToolTipService.ToolTip="Bold" 
+                          RelativePanel.Below="Tag"
+                          RelativePanel.RightOf="ziti" 
+                          Margin="308,0,-308,0" RenderTransformOrigin="0.5,0.517"/>
+            <AppBarButton x:Name="italicButton" 
+                          Icon="Italic"
+                          Foreground="Pink"
+                          Click="ItalicButton_Click" 
+                          ToolTipService.ToolTip="Italic"
+                          RelativePanel.AlignLeftWithPanel="True" 
+                          RelativePanel.Below="openFileButton"
+                          Margin="544,0,-544,0" />
+            <AppBarButton x:Name="underlineButton" 
+                          Icon="Underline"
+                          Foreground="Pink"
+                          Click="UnderlineButton_Click" 
+                          ToolTipService.ToolTip="Underline" 
+                          RelativePanel.AlignLeftWithPanel="True" 
+                          RelativePanel.Below="Notes" 
+                          Margin="619,0,-619,0" />
+            <TextBox x:Name="title"
+                     PlaceholderText="Title"  
+                     TextAlignment="Left" 
+                     FontSize="36" 
+                     RelativePanel.Below="ziti"
+                     Margin="0,0,0,0" />
+            <RichEditBox x:Name="editor"
+                         ContextMenuOpening="OnContextMenuOpening"
+                         MinHeight="500" 
+                         RelativePanel.Below="title" 
+                         RelativePanel.AlignLeftWithPanel="True" 
+                         RelativePanel.AlignRightWithPanel="True">
+                <FlyoutBase.AttachedFlyout>
+                    <MenuFlyout>
+                        <MenuFlyoutItem Text="复制" Click="OnCopy"/>
+                        <MenuFlyoutItem Text="剪切" Click="OnCut"/>
+                        <MenuFlyoutItem Text="粘贴" Click="OnPaste"/>
+                    </MenuFlyout>
+                </FlyoutBase.AttachedFlyout>
+            </RichEditBox>
+        </RelativePanel>
+    </Grid>
+</Page>
