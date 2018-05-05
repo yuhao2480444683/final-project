@@ -291,7 +291,9 @@ namespace fp
             editor.Document.Selection.Paste(0);
         }
 
+        private void Solid_Click(object sender, RoutedEventArgs e)
+        {
 
-
+        }
     }
 }

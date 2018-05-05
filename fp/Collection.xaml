@@ -10,10 +10,6 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <ScrollViewer>
             <StackPanel>
-                <StackPanel>
-                    <Button Name="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Click="Button_Click"
-                    Content="Button" ></Button>
-                </StackPanel>
                 <StackPanel Name="StackPanel"></StackPanel>
             </StackPanel>
         </ScrollViewer>
