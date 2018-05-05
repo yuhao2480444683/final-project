@@ -1,0 +1,44 @@
+﻿<Page
+    x:Class="fp.Photo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:fp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Loaded="Page_Loaded"
+    >
+
+    <Page.Resources >
+        <ResourceDictionary>
+            <AcrylicBrush x:Key="Scenerybrush"
+                  BackgroundSource="HostBackdrop"
+                  TintOpacity="0.3"
+                  TintColor="WhiteSmoke" 
+                  FallbackColor="White"/>
+        </ResourceDictionary>
+    </Page.Resources>
+    <Grid>
+
+    <Grid Background="{ThemeResource Scenerybrush}">
+        <RelativePanel BorderBrush="Pink" BorderThickness="2" CornerRadius="10" Padding="60,12,60,12">
+            <PersonPicture RelativePanel.AlignTopWithPanel="True" x:Name="photo" Foreground="white" DisplayName=""></PersonPicture>
+            <TextBlock x:Name="Name" Margin="120,20,0,0" RelativePanel.RightOf="photo" RelativePanel.AlignTopWithPanel="True" Text="昵       称" FontSize="18"></TextBlock>
+            <TextBlock x:Name="myName" Margin="20,20,0,0" RelativePanel.AlignTopWithPanel="True" RelativePanel.RightOf="Name" Text="MyName" FontSize="18"></TextBlock>
+            <TextBlock x:Name="Email" Margin="120,20,0,0" RelativePanel.Below="Name" RelativePanel.RightOf="photo" Text="邮       箱" FontSize="18"></TextBlock>
+            <TextBlock x:Name="myEmail" Margin="20,20,0,0" RelativePanel.Below="Name" RelativePanel.RightOf="Email" Text="MyEmail" FontSize="18"></TextBlock>
+            <TextBlock x:Name="Password" Margin="120,20,0,0" RelativePanel.Below="Email" RelativePanel.RightOf="photo" Text="密       码" FontSize="18"></TextBlock>
+            <PasswordBox x:Name="myPassward" Margin="12,20,0,0" RelativePanel.Below="Email" RelativePanel.RightOf="Password"  PlaceholderText="MyPassword" FontSize="18" BorderThickness="0"></PasswordBox>
+            <TextBlock x:Name="Password2" Margin="120,20,0,0" RelativePanel.Below="Password" RelativePanel.RightOf="photo" Text="确认密码" FontSize="18"></TextBlock>
+            <PasswordBox x:Name="myPassword2" Margin="12,20,0,0" RelativePanel.Below="Password" RelativePanel.RightOf="Password2" PlaceholderText="MyPassword" FontSize="18" BorderThickness="0"></PasswordBox>
+            <Border x:Name="border" Margin="120,30,150,30" MinWidth="200" Height="350" RelativePanel.Below="myPassword2" RelativePanel.AlignRightWithPanel="True"  RelativePanel.RightOf="photo">
+                <TextBox PlaceholderText="个性签名" FontSize="24"></TextBox>
+            </Border>
+            <Button x:Name="Save" Click="Save_Click" Margin="120,0,0,0" BorderBrush="Pink" BorderThickness="1,1,1,1" FontSize="18" Padding="30,10,30,10"  Foreground="DarkSlateGray" Background="White" Content="保存" FontWeight="Bold"  RelativePanel.Below="border" RelativePanel.RightOf="photo"/>
+            <Button x:Name="Exit" Click="Exit_Click" Margin="120,0,0,0" BorderBrush="Pink" BorderThickness="1,1,1,1" FontSize="18" Padding="30,10,30,10"  Foreground="DarkSlateGray" Background="White" Content="退出登录" FontWeight="Bold"  RelativePanel.Below="Save" RelativePanel.RightOf="photo"/>
+        </RelativePanel>
+
+    </Grid>
+    <Frame Name="PhotoFrame"></Frame>
+    </Grid>
+</Page>

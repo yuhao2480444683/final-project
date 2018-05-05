@@ -34,6 +34,7 @@ namespace fp
         public static int NewUserId = 0;
         public static int NewNoteId = 0;
         public static Note thisnote;
+        public static User thisuser;
         public App()
         {
             this.InitializeComponent();

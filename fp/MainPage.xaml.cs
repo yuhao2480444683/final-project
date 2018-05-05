@@ -69,6 +69,7 @@ namespace fp
 
                                  App.ThisUserName = SigninUser.Text;
                                  App.ThisUserId = Announcement.Id;
+                                 App.thisuser = Announcement;
                                  SigninFrame.Navigate(typeof(Navigation));
 
                             }
