@@ -56,6 +56,9 @@ namespace fp
                     case "Home":
                         contentFrame.Navigate(typeof(Home));
                         break;
+                    case "Photo":
+                        contentFrame.Navigate(typeof(Photo));
+                        break;
                 }
             }
 
