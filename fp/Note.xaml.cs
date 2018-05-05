@@ -8,6 +8,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using UserLibrary;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Text;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -243,8 +244,11 @@ namespace fp
         {
 
 
-           // string editorcontent = editor.Document.GetText(editor, editorcontent);
-            if(title.Text !=null || editor.Document!=null)
+            string editorcontent = "";
+            Windows.UI.Text.TextGetOptions textGetOptions = new TextGetOptions();
+
+            editor.Document.GetText( textGetOptions, out editorcontent);
+            if (title.Text !=null || editor.Document!=null)
             {
 
                 var n = new Note
@@ -252,7 +256,7 @@ namespace fp
                     Id = App.NewNoteId,
                     UserId = App.ThisUserId,
                     Title = title.Text,
-                    Content = editor.Document.ToString(),
+                    Content = editorcontent,
 
                 };
 

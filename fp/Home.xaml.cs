@@ -72,10 +72,10 @@ namespace fp
 
         private void GridView_ItemClick(object sender, ItemClickEventArgs e)
         {
-
-           var thisnote = (Note)e.ClickedItem;
+            Windows.UI.Text.TextSetOptions textSetOptions = new Windows.UI.Text.TextSetOptions();
+            var thisnote = (Note)e.ClickedItem;
             Titlebox.Text = thisnote.Title;
-            Contentbox.Text = thisnote.Content;
+            homeditor.Document.SetText(textSetOptions,thisnote.Content);
         }
 
         private async void Delete_Click(object sender, RoutedEventArgs e)
@@ -90,6 +90,11 @@ namespace fp
             {
                 Titlebox.Text = "该笔记不存在";
             }
+        }
+
+        private void Save_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

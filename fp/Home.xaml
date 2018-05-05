@@ -25,11 +25,12 @@
                 </GridView.ItemTemplate>
 
             </GridView>
-            <StackPanel >
+            <RelativePanel  >
                 <TextBox Name="Titlebox" Width="300" Height="70" FontSize="48"></TextBox>
-                <TextBox Name="Contentbox"  FontSize="30"  Height="300" Width="700"></TextBox>
-                <Button Name="Delete" Click="Delete_Click" Width="200" Height="100" FontSize="30">删除笔记，请刷新</Button>
-            </StackPanel>
+                <RichEditBox Name="homeditor" Width="700" Height="500" RelativePanel.Below="Titlebox" ></RichEditBox>
+                <Button Name="Delete" Click="Delete_Click" Width="292" Height="100" FontSize="30" RelativePanel.Below="homeditor">删除笔记，请刷新</Button>
+                <Button Name="Save" Click="Save_Click" Width="292" Height="100" FontSize="30" RelativePanel.Below="Delete">保存笔记，请刷新</Button>
+            </RelativePanel>
 
         </StackPanel>
        
