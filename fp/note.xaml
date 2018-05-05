@@ -62,6 +62,7 @@
                           Label="收藏"  
                           Width="40" 
                           Height="60"
+                          Click="Solid_Click"
                           RelativePanel.RightOf="Notes"
                           Margin="20,0,0,0"/>
             <!-- Width is not set on the green and yellow rectangles.
