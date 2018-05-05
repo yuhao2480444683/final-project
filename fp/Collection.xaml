@@ -13,5 +13,6 @@
                 <StackPanel Name="StackPanel"></StackPanel>
             </StackPanel>
         </ScrollViewer>
+        <Frame Name="CollectionFrame"></Frame>
     </Grid>
 </Page>

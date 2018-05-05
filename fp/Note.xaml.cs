@@ -293,7 +293,10 @@ namespace fp
 
         private void Solid_Click(object sender, RoutedEventArgs e)
         {
-
+            Collection collection = new Collection();
+            collection.New_Button(title.Text);
+            
+            //Collection.New_Button(title.Text);
         }
     }
 }
