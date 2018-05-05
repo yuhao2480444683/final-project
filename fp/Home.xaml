@@ -24,7 +24,7 @@
         <Grid Background="{ThemeResource Scenerybrush}">
             <RelativePanel BorderBrush="Pink" BorderThickness="2" CornerRadius="10" Padding="12" >
                 <Border x:Name="girdview" BorderBrush="Pink" BorderThickness="0,0,1,0" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignLeftWithPanel="True">
-                    <GridView ItemsSource="{x:Bind NoteCollection}"  Width="300" HorizontalAlignment="Left"   IsItemClickEnabled="True"  ItemClick="GridView_ItemClick">
+                    <GridView  ItemsSource="{x:Bind NoteCollection}"  Width="300" HorizontalAlignment="Left"   IsItemClickEnabled="True"  ItemClick="GridView_ItemClick">
                         <GridView.ItemTemplate>
                             <DataTemplate x:DataType="UserLibrary:Note">
                                 <StackPanel Margin="10">
@@ -35,9 +35,9 @@
 
                     </GridView>
                 </Border>
-                <TextBox Name="Titlebox" BorderBrush="Pink" Margin="12,0,0,0" Height="70" FontSize="36" RelativePanel.RightOf="girdview" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignRightWithPanel="True"></TextBox>
-                <RichEditBox Name="homeditor" BorderBrush="Pink" Margin="12,0,0,0" FontSize="24"  Height="200" RelativePanel.RightOf="girdview" RelativePanel.Below="Titlebox"  RelativePanel.AlignRightWithPanel="True"></RichEditBox>
-                <Button Name="Delete" Click="Delete_Click" Height="70" RelativePanel.RightOf="girdview" RelativePanel.Below="Contentbox"  BorderBrush="Pink" BorderThickness="1,1,1,1" FontSize="18" Padding="30,10,30,10" Margin="12,15,30,0" Foreground="Gray" Background="White">删除笔记，请刷新</Button>
+                <TextBox Name="Titlebox" Margin="12,0,0,0" Height="70" FontSize="36" RelativePanel.RightOf="girdview" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignRightWithPanel="True"></TextBox>
+                <TextBox Name="Contentbox" Margin="12,0,0,0" FontSize="24"  Height="200" RelativePanel.RightOf="girdview" RelativePanel.Below="Titlebox"  RelativePanel.AlignRightWithPanel="True"></TextBox>
+                <Button Name="Delete" Click="Delete_Click" Height="70" RelativePanel.RightOf="girdview" RelativePanel.Below="Contentbox"  BorderBrush="Pink" BorderThickness="1,1,1,1" FontSize="18" Padding="30,10,30,10" Margin="12,15,30,0" Foreground="DarkSlateGray" Background="White">删除笔记，请刷新</Button>
 
             </RelativePanel>
 

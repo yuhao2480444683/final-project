@@ -267,31 +267,5 @@ namespace fp
 
         }
 
-        private void OnContextMenuOpening(object sender, ContextMenuEventArgs e)
-        {
-            //阻止弹出默认的上下文菜单，然后，调用ShowAt方法在指定的坐标处打开菜单
-            e.Handled = true;
-            MenuFlyout menu = FlyoutBase.GetAttachedFlyout(editor) as MenuFlyout;
-            menu?.ShowAt(editor, new Windows.Foundation.Point(e.CursorLeft, e.CursorTop));
-        }
-
-        private void OnCopy(object sender, RoutedEventArgs e)
-        {
-            editor.Document.Selection.Copy();
-        }
-
-        private void OnCut(object sender, RoutedEventArgs e)
-        {
-            editor.Document.Selection.Cut();
-        }
-
-        private void OnPaste(object sender, RoutedEventArgs e)
-        {
-            // Paste方法带有一个整型参数，表示要粘贴的格式
-            editor.Document.Selection.Paste(0);
-        }
-
-
-
     }
 }
