@@ -130,11 +130,20 @@
                      FontSize="36" 
                      RelativePanel.Below="ziti"
                      Margin="0,0,0,0" />
-            <RichEditBox x:Name="editor" 
-                         Height="200" 
+            <RichEditBox x:Name="editor"
+                         ContextMenuOpening="OnContextMenuOpening"
+                         MinHeight="500" 
                          RelativePanel.Below="title" 
                          RelativePanel.AlignLeftWithPanel="True" 
-                         RelativePanel.AlignRightWithPanel="True"/>
+                         RelativePanel.AlignRightWithPanel="True">
+                <FlyoutBase.AttachedFlyout>
+                    <MenuFlyout>
+                        <MenuFlyoutItem Text="复制" Click="OnCopy"/>
+                        <MenuFlyoutItem Text="剪切" Click="OnCut"/>
+                        <MenuFlyoutItem Text="粘贴" Click="OnPaste"/>
+                    </MenuFlyout>
+                </FlyoutBase.AttachedFlyout>
+            </RichEditBox>
         </RelativePanel>
     </Grid>
 </Page>
