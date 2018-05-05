@@ -248,7 +248,7 @@ namespace fp
             Windows.UI.Text.TextGetOptions textGetOptions = new TextGetOptions();
 
             editor.Document.GetText( textGetOptions, out editorcontent);
-            if (title.Text !=null || editor.Document!=null)
+            if (title.Text !=null || editorcontent != null)
             {
 
                 var n = new Note

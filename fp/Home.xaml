@@ -20,7 +20,7 @@
     </Page.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-        
+
         <Grid Background="{ThemeResource Scenerybrush}">
             <RelativePanel BorderBrush="Pink" BorderThickness="2" CornerRadius="10" Padding="12" >
                 <Border x:Name="girdview" BorderBrush="Pink" BorderThickness="0,0,1,0" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignLeftWithPanel="True">
@@ -36,12 +36,15 @@
                     </GridView>
                 </Border>
                 <TextBox Name="Titlebox" BorderBrush="Pink" Margin="12,0,0,0" Height="70" FontSize="36" RelativePanel.RightOf="girdview" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignRightWithPanel="True"></TextBox>
-                <TextBox Name="Contentbox" BorderBrush="Pink" Margin="12,0,0,0" FontSize="24"  Height="200" RelativePanel.RightOf="girdview" RelativePanel.Below="Titlebox"  RelativePanel.AlignRightWithPanel="True"></TextBox>
-                <Button Name="Delete" Click="Delete_Click" Height="70" RelativePanel.RightOf="girdview" RelativePanel.Below="Contentbox"  BorderBrush="Pink" BorderThickness="1,1,1,1" FontSize="18" Padding="30,10,30,10" Margin="12,15,30,0" Foreground="Gray" Background="White">删除笔记，请刷新</Button>
-
+                <RichEditBox Name="homeditor" BorderBrush="Pink" Margin="12,0,0,0" FontSize="24"  Height="200" RelativePanel.RightOf="girdview" RelativePanel.Below="Titlebox"  RelativePanel.AlignRightWithPanel="True"></RichEditBox>
+                <Button Name="Delete" Click="Delete_Click" Height="70" RelativePanel.RightOf="girdview" RelativePanel.Below="homeditor"  BorderBrush="Pink" BorderThickness="1,1,1,1" FontSize="18" Padding="30,10,30,10" Margin="12,15,30,0" Foreground="Gray" Background="White">删除笔记，请刷新</Button>
+                <Button Name="Save" Click="Save_Click" Height="70" RelativePanel.RightOf="girdview" RelativePanel.Below="Delete"  BorderBrush="Pink" BorderThickness="1,1,1,1" FontSize="18" Padding="30,10,30,10" Margin="11.6,15.6,-77.6,0" Foreground="Gray" Background="White" Width="206">保存</Button>
             </RelativePanel>
 
 
         </Grid>
+
+        <Frame Name="HomeFrame"></Frame>
+        
     </Grid>
 </Page>

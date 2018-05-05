@@ -18,6 +18,7 @@ using Microsoft.EntityFrameworkCore;
 using fp.Models;
 using Windows.Storage;
 using Microsoft.Data.Sqlite;
+using Windows.UI.Text;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
 
@@ -73,9 +74,9 @@ namespace fp
         private void GridView_ItemClick(object sender, ItemClickEventArgs e)
         {
             Windows.UI.Text.TextSetOptions textSetOptions = new Windows.UI.Text.TextSetOptions();
-            var thisnote = (Note)e.ClickedItem;
-            Titlebox.Text = thisnote.Title;
-            homeditor.Document.SetText(textSetOptions,thisnote.Content);
+            App.thisnote = (Note)e.ClickedItem;
+            Titlebox.Text = App.thisnote.Title;
+            homeditor.Document.SetText(textSetOptions,App.thisnote.Content);
         }
 
         private async void Delete_Click(object sender, RoutedEventArgs e)
@@ -90,11 +91,28 @@ namespace fp
             {
                 Titlebox.Text = "该笔记不存在";
             }
+            HomeFrame.Navigate(typeof(Home));
         }
 
-        private void Save_Click(object sender, RoutedEventArgs e)
+        private async void Save_Click(object sender, RoutedEventArgs e)
         {
+            string editorcontent = "";
+            Windows.UI.Text.TextGetOptions textGetOptions = new TextGetOptions();
+            homeditor.Document.GetText(textGetOptions, out editorcontent);
+
+
+            var Announcement = await Database.Context.Notes.SingleOrDefaultAsync(m => m.Id == App.thisnote.Id);
+            if (Announcement != null)
+            {
+                Announcement.Title = Titlebox.Text;
+                Announcement.Content = editorcontent;
+                await Database.Context.SaveChangesAsync();
+            }
+            HomeFrame.Navigate(typeof(Home));
+
 
         }
+
+  
     }
 }
