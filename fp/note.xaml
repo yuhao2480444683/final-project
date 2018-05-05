@@ -18,7 +18,7 @@
     </Page.Resources>
        <Grid Background="{ThemeResource Scenerybrush}">
         <RelativePanel BorderBrush="Pink" BorderThickness="2" CornerRadius="10" Padding="12">
-            <AppBarButton x:Name="Tag" Foreground="Pink" >
+            <AppBarButton x:Name="Tag" Style="{ThemeResource AppBarButtonRevealStyle}" Foreground="Pink" >
                 <AppBarButton.Icon>
                     <FontIcon Glyph="&#xE8EC;"></FontIcon>
                 </AppBarButton.Icon>

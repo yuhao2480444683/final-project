@@ -72,10 +72,12 @@ namespace fp
 
         private void GridView_ItemClick(object sender, ItemClickEventArgs e)
         {
-
+            
+            Windows.UI.Text.TextSetOptions textSetOptions = new Windows.UI.Text.TextSetOptions();
+            
            var thisnote = (Note)e.ClickedItem;
             Titlebox.Text = thisnote.Title;
-            Contentbox.Text = thisnote.Content;
+            homeditor.Document.SetText(textSetOptions, thisnote.Content);
         }
 
         private async void Delete_Click(object sender, RoutedEventArgs e)

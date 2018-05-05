@@ -243,7 +243,9 @@ namespace fp
         {
 
 
-           // string editorcontent = editor.Document.GetText(editor, editorcontent);
+            string editorcontent = "";
+            Windows.UI.Text.TextGetOptions textGetOptions = new Windows.UI.Text.TextGetOptions();
+            editor.Document.GetText(textGetOptions,out editorcontent);
             if(title.Text !=null || editor.Document!=null)
             {
 
@@ -252,7 +254,7 @@ namespace fp
                     Id = App.NewNoteId,
                     UserId = App.ThisUserId,
                     Title = title.Text,
-                    Content = editor.Document.ToString(),
+                    Content = editorcontent,
 
                 };
 
