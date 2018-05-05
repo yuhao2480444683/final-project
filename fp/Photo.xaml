@@ -35,7 +35,7 @@
                 <TextBox PlaceholderText="个性签名" FontSize="24"></TextBox>
             </Border>
             <Button x:Name="Save" Click="Save_Click" Margin="120,0,0,0" BorderBrush="Pink" BorderThickness="1,1,1,1" FontSize="18" Padding="30,10,30,10"  Foreground="DarkSlateGray" Background="White" Content="保存" FontWeight="Bold"  RelativePanel.Below="border" RelativePanel.RightOf="photo"/>
-            <Button x:Name="Exit" Click="Exit_Click" Margin="120,0,0,0" BorderBrush="Pink" BorderThickness="1,1,1,1" FontSize="18" Padding="30,10,30,10"  Foreground="DarkSlateGray" Background="White" Content="退出登录" FontWeight="Bold"  RelativePanel.Below="Save" RelativePanel.RightOf="photo"/>
+            <Button x:Name="Exit" Click="Exit_Click" Margin="400,0,0,0" BorderBrush="Pink" BorderThickness="1,1,1,1" FontSize="18" Padding="30,10,30,10"  Foreground="DarkSlateGray" Background="White" Content="退出登录" FontWeight="Bold"  RelativePanel.Below="border" RelativePanel.RightOf="Save"/>
         </RelativePanel>
 
     </Grid>

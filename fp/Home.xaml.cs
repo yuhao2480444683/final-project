@@ -81,7 +81,7 @@ namespace fp
 
         private async void Delete_Click(object sender, RoutedEventArgs e)
         {
-            var Announcement = await Database.Context.Notes.FirstOrDefaultAsync(m => m.Title == Titlebox.Text);
+            var Announcement = await Database.Context.Notes.FirstOrDefaultAsync(m => m.Id == App.thisnote.Id);
             if (Announcement != null)
             {
                 Database.Context.Notes.Remove(Announcement);
